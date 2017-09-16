@@ -1,23 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import Dashboard from "./src/Dashboard/containers/Dashboard";
+import store from "./src/store";
+import { Router, Scene, Stack } from "react-native-router-flux";
+import { Provider } from "react-redux";
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <Provider store={store}>
+        <Router sceneStyle={{ backgroundColor: "black" }}>
+          <Stack key="root">
+            <Scene key="dashboard" component={Dashboard} initial />
+          </Stack>
+        </Router>
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
