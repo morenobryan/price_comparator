@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboard from "./src/Dashboard/containers/Dashboard";
+import ComparePaper from "./src/ComparePaper/containers/ComparePaper";
 import store from "./src/store";
 import { Router, Scene, Stack } from "react-native-router-flux";
 import { Provider } from "react-redux";
@@ -10,7 +10,13 @@ export default class App extends React.Component {
       <Provider store={store}>
         <Router sceneStyle={{ backgroundColor: "black" }}>
           <Stack key="root">
-            <Scene key="dashboard" component={Dashboard} initial />
+            <Scene
+              key="comparePaper"
+              component={ComparePaper}
+              title="ComparePaper"
+              initial
+            />
+            <Scene key="login" component={ComparePaper} title="Login" />
           </Stack>
         </Router>
       </Provider>
