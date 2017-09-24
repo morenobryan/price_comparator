@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
+import { reducer as form } from "redux-form";
 
-const dash = (state = {}, action) => {
+const dash = (state = {}, action: { type: string }) => {
   switch (action.type) {
     case "A":
       return { ...state };
@@ -11,5 +12,6 @@ const dash = (state = {}, action) => {
 };
 
 export default combineReducers({
-  dash
+  dash,
+  form
 });
