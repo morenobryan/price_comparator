@@ -1,11 +1,11 @@
-import { combineReducers } from "redux";
-import { reducer as form } from "redux-form";
+// @flow
+import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 
 const dash = (state = {}, action: { type: string }) => {
   switch (action.type) {
-    case "A":
+    case 'A':
       return { ...state };
-      break;
     default:
       return state;
   }
@@ -13,5 +13,5 @@ const dash = (state = {}, action: { type: string }) => {
 
 export default combineReducers({
   dash,
-  form
+  form,
 });

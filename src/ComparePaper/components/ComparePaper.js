@@ -1,30 +1,19 @@
 // @flow
-import React from "react";
-import { Field } from "redux-form";
-import { StyleSheet, Text, TextInput, Button, View, Image } from "react-native";
+import React from 'react';
+import { Field } from 'redux-form';
+import { StyleSheet, Text, TextInput, Button, View, Image } from 'react-native';
 
 const submit = (values, _dispatcher, props) => {
-  console.log("values", values);
-  console.log("dispatcher", _dispatcher);
-  // console.log("props", props);
+  console.log('values', values);
+  calculate();
 };
 
 const renderInput = ({ input: { onChange, ...restInput } }) => {
-  return (
-    <TextInput
-      style={{ height: 40, width: 300 }}
-      onChangeText={onChange}
-      {...restInput}
-    />
-  );
-};
-
-const calculate = props => {
-  console.log("props", props);
+  return <TextInput style={{ height: 40, width: 300 }} onChangeText={onChange} {...restInput} />;
 };
 
 const ComparePaper = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, calculate } = props;
 
   return (
     <View style={styles.container}>
@@ -53,8 +42,8 @@ export default ComparePaper;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

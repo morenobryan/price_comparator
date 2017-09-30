@@ -7,10 +7,10 @@ import rootReducer from "./rootReducers";
 
 const middlewares = [thunk];
 
-if (__DEV__ === true) {
-  const logger = createLoggerMiddleware({ collapsed: true, duration: true });
-  middlewares.push(logger);
-}
+// if (__DEV__ === true) {
+// const logger = createLoggerMiddleware({ collapsed: true, duration: true });
+// middlewares.push(logger);
+// }
 
 export default createStore(
   rootReducer,
