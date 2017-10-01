@@ -3,17 +3,17 @@ import React from 'react';
 import { Field } from 'redux-form';
 import { StyleSheet, Text, TextInput, Button, View, Image } from 'react-native';
 
-const submit = (values, _dispatcher, props) => {
-  console.log('values', values);
-  calculate();
-};
-
 const renderInput = ({ input: { onChange, ...restInput } }) => {
   return <TextInput style={{ height: 40, width: 300 }} onChangeText={onChange} {...restInput} />;
 };
 
 const ComparePaper = props => {
   const { handleSubmit, calculate } = props;
+
+  const submit = (values, dispatch, props) => {
+    console.log('values', values);
+    calculate();
+  };
 
   return (
     <View style={styles.container}>
@@ -32,7 +32,7 @@ const ComparePaper = props => {
         accessibilityLabel="Learn more about this purple button"
       />
 
-      <Text>{calculate(props)}</Text>
+      <Text>{props.calculated}</Text>
     </View>
   );
 };

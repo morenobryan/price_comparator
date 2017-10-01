@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { calculate } from '../actions';
-// import {} from "../selectors";
+import { calculateProductSum } from '../selectors';
 
 import ComparePaper from '../components/ComparePaper';
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  calculated: calculateProductSum(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   calculate: () => {
