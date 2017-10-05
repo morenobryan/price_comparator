@@ -15,6 +15,10 @@ const mapDispatchToProps = dispatch => ({
   calculate: () => {
     dispatch(calculate());
   },
+
+  nextInput: () => {
+
+  }
 });
 
 const Component = connect(mapStateToProps, mapDispatchToProps)(ComparePaper);
