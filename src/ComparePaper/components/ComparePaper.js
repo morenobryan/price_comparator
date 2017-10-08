@@ -11,69 +11,151 @@ import {
   Image,
 } from 'react-native';
 
-const renderInput = ({ input: { onChange, ...restInput }, returnKeyType, keyboardType }) => (
-  <TextInput
-    underlineColorAndroid="transparent"
-    keyboardType={keyboardType}
-    returnKeyType={returnKeyType}
-    style={styles.textInput}
-    onChangeText={onChange}
-    {...restInput}
-  />
-);
+class ComparisonInput extends React.Component {
+  render() {
+    const {
+      input: { onChange, ...restInput },
+      refField,
+      returnKeyType,
+      keyboardType,
+      onEnter,
+      selectionColor,
+    } = this.props;
 
-const ComparePaper = props => {
-  const { handleSubmit, calculate, navigation } = props;
+    return (
+      <TextInput
+        ref={refField}
+        underlineColorAndroid="transparent"
+        keyboardType={keyboardType}
+        returnKeyType={returnKeyType}
+        style={styles.textInput}
+        onChangeText={onChange}
+        onSubmitEditing={onEnter}
+        selectionColor={selectionColor}
+        {...restInput}
+      />
+    );
+  }
+}
 
-  const submit = (values, dispatch, props) => {
-    calculate();
-  };
-  return <View style={styles.container}>
-      <View style={[styles.subContainer, styles.subContainerOne]}>
-        <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Quantidade de Rolos</Text>
-          <Field name="rollAmount" keyboardType="numeric" returnKeyType="next" component={renderInput} />
+export default class ComparePaper extends React.Component {
+  render() {
+    const { handleSubmit, calculate, navigation } = this.props;
+
+    return (
+      <View style={styles.container}>
+        <View style={[styles.subContainer, styles.subContainerOne]}>
+          <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Quantidade de Rolos</Text>
+            <Field
+              ref={componentRef => (this.rollAmount = componentRef)}
+              refField="rollAmount"
+              focus
+              withRef
+              name="rollAmount"
+              keyboardType="numeric"
+              returnKeyType="next"
+              selectionColor={'#0D47A1'}
+              component={ComparisonInput}
+              onEnter={() => this.rollWidth.getRenderedComponent().refs.rollWidth.focus()}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Comprimento do Rolo</Text>
+            <Field
+              ref={componentRef => (this.rollWidth = componentRef)}
+              refField="rollWidth"
+              withRef
+              name="rollWidth"
+              keyboardType="numeric"
+              returnKeyType="next"
+              selectionColor={'#0D47A1'}
+              component={ComparisonInput}
+              onEnter={() => this.widthUnit.getRenderedComponent().refs.widthUnit.focus()}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Unidade</Text>
+            <Field
+              ref={componentRef => (this.widthUnit = componentRef)}
+              refField="widthUnit"
+              withRef
+              name="widthUnit"
+              keyboardType="numeric"
+              returnKeyType="next"
+              selectionColor={'#0D47A1'}
+              component={ComparisonInput}
+              onEnter={() => this.price.getRenderedComponent().refs.price.focus()}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={styles.inputLabel}>Preço</Text>
+            <Field
+              ref={componentRef => (this.price = componentRef)}
+              refField="price"
+              withRef
+              name="price"
+              keyboardType="numeric"
+              returnKeyType="next"
+              selectionColor={'#0D47A1'}
+              component={ComparisonInput}
+              onEnter={() => this.price.getRenderedComponent().refs.price.focus()}
+            />
+          </View>
         </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Comprimento do Rolo</Text>
-          <Field name="rollWidth" keyboardType="numeric" returnKeyType="next" component={renderInput} />
+
+        <View style={[styles.subContainer, styles.subContainerTwo]}>
+          <Text style={[styles.title, styles.titleTwo]}>PRODUTO 2</Text>
+          <View style={styles.inputContainer}>
+            <Text style={[styles.inputLabel, styles.inputTwo]}>Quantidade de Rolos</Text>
+            <Field
+              name="rollAmount"
+              keyboardType="numeric"
+              returnKeyType="next"
+              component={ComparisonInput}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={[styles.inputLabel, styles.inputTwo]}>Comprimento do Rolo</Text>
+            <Field
+              name="rollWidth"
+              keyboardType="numeric"
+              returnKeyType="next"
+              component={ComparisonInput}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={[styles.inputLabel, styles.inputTwo]}>Unidade</Text>
+            <Field
+              name="widthUnit"
+              keyboardType="numeric"
+              returnKeyType="next"
+              component={ComparisonInput}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <Text style={[styles.inputLabel, styles.inputTwo]}>Preço</Text>
+            <Field
+              name="price"
+              keyboardType="numeric"
+              returnKeyType="go"
+              component={ComparisonInput}
+            />
+          </View>
         </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Unidade</Text>
-          <Field name="widthUnit" keyboardType="numeric" returnKeyType="next" component={renderInput} />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Preço</Text>
-          <Field name="price" keyboardType="numeric" returnKeyType="next" component={renderInput} />
-        </View>
+
+        <Button
+          style={styles.submitButton}
+          onPress={() => navigation.navigate('ComparePaperResult')}
+          color="#841584"
+          title="Result"
+          accessibilityLabel="Go to the Result"
+        />
       </View>
-
-      <View style={[styles.subContainer, styles.subContainerTwo]}>
-        <Text style={[styles.title, styles.titleTwo]}>PRODUTO 2</Text>
-        <View style={styles.inputContainer}>
-          <Text style={[styles.inputLabel, styles.inputTwo]}>Quantidade de Rolos</Text>
-          <Field name="rollAmount" keyboardType="numeric" returnKeyType="next" component={renderInput} />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={[styles.inputLabel, styles.inputTwo]}>Comprimento do Rolo</Text>
-          <Field name="rollWidth" keyboardType="numeric" returnKeyType="next" component={renderInput} />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={[styles.inputLabel, styles.inputTwo]}>Unidade</Text>
-          <Field name="widthUnit" keyboardType="numeric" returnKeyType="next" component={renderInput} />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={[styles.inputLabel, styles.inputTwo]}>Preço</Text>
-          <Field name="price" keyboardType="numeric" returnKeyType="go" component={renderInput} />
-        </View>
-      </View>
-
-      <Button style={styles.submitButton} onPress={() => navigation.navigate('ComparePaperResult')} color="#841584" title="Result" accessibilityLabel="Go to the Result" />
-    </View>;
-};
-
-export default ComparePaper;
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
