@@ -16,12 +16,20 @@ const mapDispatchToProps = dispatch => ({
     dispatch(calculate());
   },
 
-  nextInput: () => {
-
-  }
+  nextInput: () => {},
 });
 
 const Component = connect(mapStateToProps, mapDispatchToProps)(ComparePaper);
 export default reduxForm({
   form: 'comparePaper',
+  validate: values => {
+    const errors = {};
+
+    errors.rollAmount = !values.rollAmount ? 'Este campo é obrigatório' : undefined;
+    errors.rollWidth = !values.rollWidth ? 'Este campo é obrigatório' : undefined;
+    errors.widthUnit = !values.widthUnit ? 'Este campo é obrigatório' : undefined;
+    errors.price = !values.price ? 'Este campo é obrigatório' : undefined;
+
+    return errors;
+  },
 })(Component);
