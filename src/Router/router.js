@@ -9,17 +9,20 @@ export const Root = StackNavigator(
     ComparePaper: {
       screen: ComparePaper,
       navigationOptions: {
+        header: null,
         title: 'Comparar Papel',
       },
     },
     ComparePaperResult: {
       screen: ComparePaperResult,
       navigationOptions: {
+        header: null,
         title: 'Comparar Papel - Resultado',
       },
     },
   },
   {
+    headerMode: 'screen',
     cardStyle: {
       paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
     },
