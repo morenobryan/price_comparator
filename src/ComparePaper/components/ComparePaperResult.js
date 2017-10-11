@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Field } from 'redux-form';
-import { StyleSheet, Text, TextInput, Button, View, Image } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
 
 const ComparePaperResult = props => {
   return (
@@ -15,20 +15,18 @@ const ComparePaperResult = props => {
         <Text style={styles.inputTwo}>{props.calculated}</Text>
       </View>
 
-      <Button
+      <TouchableOpacity
         style={styles.submitButton}
         onPress={() => props.navigation.navigate('ComparePaper')}
-        color="#0D47A1"
-        title="Voltar"
-        accessibilityLabel="Voltar"
-      />
-      <Button
+      >
+        <Text style={[styles.unitLabel, styles.unitLabelTwo]}>Voltar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
         style={styles.submitButton}
         onPress={() => props.navigation.navigate('ComparePaperResult')}
-        color="#0D47A1"
-        title="Comparar"
-        accessibilityLabel="Comparar"
-      />
+      >
+        <Text style={[styles.unitLabel, styles.unitLabelTwo]}>Comparar</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -62,6 +60,33 @@ const styles = StyleSheet.create({
   titleTwo: {
     color: '#01579B',
   },
+  unitButton: {
+    marginRight: 5,
+    marginLeft: 5,
+    paddingTop: 2,
+    paddingRight: 7,
+    paddingBottom: 4,
+    paddingLeft: 7,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  unitButtonOne: {
+    backgroundColor: '#1976D2',
+    borderColor: '#1565C0',
+  },
+  unitButtonTwo: {
+    backgroundColor: '#0288D1',
+    borderColor: '#0277BD',
+  },
+  unitLabel: {
+    fontFamily: 'proximaNovaAltRegular',
+  },
+  unitLabelOne: {
+    color: '#B3E5FC',
+  },
+  unitLabelTwo: {
+    color: '#B3E5FC',
+  },
   inputContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -91,4 +116,10 @@ const styles = StyleSheet.create({
     borderColor: '#B3E5FC',
     color: '#B3E5FC',
   },
+  submitButton: {
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#0D47A1',
+  },
+  submitText: {},
 });

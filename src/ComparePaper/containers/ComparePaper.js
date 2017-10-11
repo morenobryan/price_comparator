@@ -15,8 +15,6 @@ const mapDispatchToProps = dispatch => ({
   calculate: () => {
     dispatch(calculate());
   },
-
-  nextInput: () => {},
 });
 
 const Component = connect(mapStateToProps, mapDispatchToProps)(ComparePaper);
@@ -37,12 +35,6 @@ export default reduxForm({
       errors.rollWidth = requiredError;
     } else if (Number.isNaN(Number(values.rollWidth)) || Number(values.rollAmount) <= 0) {
       errors.rollWidth = numberError;
-    }
-
-    if (!values.widthUnit) {
-      errors.widthUnit = requiredError;
-    } else if (Number.isNaN(Number(values.widthUnit)) || Number(values.rollAmount) <= 0) {
-      errors.widthUnit = numberError;
     }
 
     if (!values.price) {

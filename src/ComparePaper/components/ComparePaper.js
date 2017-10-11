@@ -7,6 +7,7 @@ import {
   Text,
   TextInput,
   Button,
+  TouchableOpacity,
   View,
   Image,
 } from 'react-native';
@@ -84,17 +85,18 @@ export default class ComparePaper extends React.Component {
             </View>
             <View style={styles.inputContainer}>
               <Text style={styles.inputLabel}>Unidade</Text>
-              <Field
-                ref={componentRef => (this.widthUnit = componentRef)}
-                refField="widthUnit"
-                withRef
-                name="widthUnit"
-                keyboardType="numeric"
-                returnKeyType="next"
-                selectionColor={'#0D47A1'}
-                component={ComparisonInput}
-                onEnter={() => this.price.getRenderedComponent().refs.price.focus()}
-              />
+              <TouchableOpacity
+                style={[styles.unitButton, styles.unitButtonOne]}
+                onPress={this._onPressButton}
+              >
+                <Text style={[styles.unitLabel, styles.unitLabelOne]}>m</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.unitButton, styles.unitButtonOne]}
+                onPress={this._onPressButton}
+              >
+                <Text style={[styles.unitLabel, styles.unitLabelOne]}>cm</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.inputContainer}>
               <Text style={styles.inputLabel}>Preço</Text>
@@ -134,12 +136,18 @@ export default class ComparePaper extends React.Component {
             </View>
             <View style={styles.inputContainer}>
               <Text style={[styles.inputLabel, styles.inputTwo]}>Unidade</Text>
-              <Field
-                name="widthUnit"
-                keyboardType="numeric"
-                returnKeyType="next"
-                component={ComparisonInput}
-              />
+              <TouchableOpacity
+                style={[styles.unitButton, styles.unitButtonTwo]}
+                onPress={this._onPressButton}
+              >
+                <Text style={[styles.unitLabel, styles.unitLabelTwo]}>m</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.unitButton, styles.unitButtonTwo]}
+                onPress={this._onPressButton}
+              >
+                <Text style={[styles.unitLabel, styles.unitLabelTwo]}>cm</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.inputContainer}>
               <Text style={[styles.inputLabel, styles.inputTwo]}>Precinho</Text>
@@ -152,14 +160,13 @@ export default class ComparePaper extends React.Component {
             </View>
           </View>
 
-          <Button
+          <TouchableOpacity
             style={styles.submitButton}
             onPress={() => navigation.navigate('ComparePaperResult')}
             disabled={invalid || pristine || submitting}
-            color="#0D47A1"
-            title="Comparar"
-            accessibilityLabel="Comparar"
-          />
+          >
+            <Text style={[styles.unitLabel, styles.unitLabelOne]}>Comparar</Text>
+          </TouchableOpacity>
         </KeyboardAwareScrollView>
       </View>
     );
@@ -193,6 +200,34 @@ const styles = StyleSheet.create({
   titleTwo: {
     color: '#01579B',
   },
+  unitButton: {
+    marginRight: 5,
+    marginLeft: 5,
+    paddingTop: 2,
+    paddingRight: 7,
+    paddingBottom: 4,
+    paddingLeft: 7,
+    borderWidth: 1,
+    borderRadius: 5,
+  },
+  unitButtonOne: {
+    backgroundColor: '#1976D2',
+    borderColor: '#1565C0',
+  },
+  unitButtonTwo: {
+    backgroundColor: '#0288D1',
+    borderColor: '#0277BD',
+  },
+
+  unitLabel: {
+    fontFamily: 'proximaNovaAltRegular',
+  },
+  unitLabelOne: {
+    color: '#B3E5FC',
+  },
+  unitLabelTwo: {
+    color: '#B3E5FC',
+  },
   inputContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -222,4 +257,10 @@ const styles = StyleSheet.create({
     borderColor: '#B3E5FC',
     color: '#B3E5FC',
   },
+  submitButton: {
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#0D47A1',
+  },
+  submitText: {},
 });
