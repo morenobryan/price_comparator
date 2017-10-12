@@ -9,6 +9,7 @@ import { validateComparePaperForm } from '../validation';
 import ProductOne from '../components/ProductForm';
 
 const mapStateToProps = state => ({
+  productName: 'PRODUTO 1',
   unit: getUnit(state),
 });
 

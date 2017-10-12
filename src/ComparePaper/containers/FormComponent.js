@@ -6,12 +6,14 @@ import ProductOne from './ProductOne';
 import ProductTwo from './ProductTwo';
 
 type Props = {
+  formOneDisabled: boolean,
+  formTwoDisabled: boolean,
   navigation: { navigate: string => void },
 };
 
 export default class ComparePaper extends React.Component<Props> {
   render() {
-    const disabledSubmit = () => true; //invalid || pristine || submitting;
+    const disabledSubmit = () => this.props.formOneDisabled || this.props.formTwoDisabled;
 
     return (
       <View style={styles.container}>

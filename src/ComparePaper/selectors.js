@@ -2,12 +2,13 @@ import { createSelector } from 'reselect';
 import { formValueSelector } from 'redux-form';
 
 const ui = state => state.comparePaper.ui;
-export const form = formValueSelector('comparePaper');
+export const formProductOne = formValueSelector('comparePaperProductOne');
+export const formProductTwo = formValueSelector('comparePaperProductTwo');
 
 export const calculateProductSum = state => {
-  const rollAmount = form(state, 'rollAmount');
-  const rollWidth = form(state, 'rollWidth');
-  const price = form(state, 'price');
+  const rollAmount = formProductOne(state, 'rollAmount');
+  const rollWidth = formProductOne(state, 'rollWidth');
+  const price = formProductOne(state, 'price');
 
   return rollAmount * rollWidth / price;
 };

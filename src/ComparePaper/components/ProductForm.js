@@ -6,6 +6,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import ComparisonInput from './ComparisonInput';
 
 type Props = {
+  productName: string,
   setMeterUnit: () => void,
   setCentimeterUnit: () => void,
   unit: string,
@@ -24,7 +25,7 @@ export default class ComparePaper extends React.Component<Props> {
   render() {
     return (
       <View style={[styles.subContainer, styles.subContainerOne]}>
-        <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
+        <Text style={[styles.title, styles.titleOne]}>{this.props.productName}</Text>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Quantidade de Rolos</Text>
           <Field
