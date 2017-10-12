@@ -34,74 +34,48 @@ export default class ComparePaper extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
-          <View style={[styles.subContainer, styles.subContainerOne]}>
-            <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
+          <View style={[styles.subContainer, styles.subContainerTwo]}>
+            <Text style={[styles.title, styles.titleTwo]}>PRODUTO 2</Text>
             <View style={styles.inputContainer}>
-              <Text style={styles.inputLabel}>Quantidade de Rolos</Text>
+              <Text style={[styles.inputLabel, styles.inputTwo]}>Quantidade de Rolos</Text>
               <Field
-                ref={this.setRollAmountRef}
-                refField="rollAmount"
-                withRef
                 name="rollAmount"
-                keyboardType="numeric"
-                returnKeyType="next"
-                selectionColor="#0D47A1"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 component={ComparisonInput}
-                onEnter={() => {
-                  this.rollWidth && this.rollWidth.getRenderedComponent().refs.rollWidth.focus();
-                }}
               />
             </View>
             <View style={styles.inputContainer}>
-              <Text style={styles.inputLabel}>Comprimento do Rolo</Text>
+              <Text style={[styles.inputLabel, styles.inputTwo]}>Comprimento do Rolo</Text>
               <Field
-                ref={this.setRollWidthRef}
-                refField="rollWidth"
-                withRef
                 name="rollWidth"
-                keyboardType="numeric"
-                returnKeyType="next"
-                selectionColor="#0D47A1"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 component={ComparisonInput}
-                onEnter={() =>
-                  this.widthUnit && this.widthUnit.getRenderedComponent().refs.widthUnit.focus()}
               />
             </View>
             <View style={styles.inputContainer}>
-              <Text style={styles.inputLabel}>Unidade</Text>
+              <Text style={[styles.inputLabel, styles.inputTwo]}>Unidade</Text>
               <TouchableOpacity
-                style={
-                  unit === 'm'
-                    ? [styles.unitButton, styles.unitButtonOne]
-                    : [styles.unitButton, styles.unitButtonOneDisabled]
-                }
+                style={[styles.unitButton, styles.unitButtonTwo]}
                 onPress={this.props.setMeterUnit}
               >
-                <Text style={[styles.unitLabel, styles.unitLabelOne]}>m</Text>
+                <Text style={[styles.unitLabel, styles.unitLabelTwo]}>m</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={
-                  unit === 'cm'
-                    ? [styles.unitButton, styles.unitButtonOne]
-                    : [styles.unitButton, styles.unitButtonOneDisabled]
-                }
+                style={[styles.unitButton, styles.unitButtonTwo]}
                 onPress={this.props.setCentimeterUnit}
               >
-                <Text style={[styles.unitLabel, styles.unitLabelOne]}>cm</Text>
+                <Text style={[styles.unitLabel, styles.unitLabelTwo]}>cm</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.inputContainer}>
-              <Text style={styles.inputLabel}>Preço</Text>
+              <Text style={[styles.inputLabel, styles.inputTwo]}>Preço</Text>
               <Field
-                ref={this.setPriceRef}
-                refField="price"
-                withRef
                 name="price"
-                keyboardType="numeric"
-                returnKeyType="next"
-                selectionColor="#0D47A1"
+                keyboardType={'numeric'}
+                returnKeyType={'go'}
                 component={ComparisonInput}
-                onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
               />
             </View>
           </View>

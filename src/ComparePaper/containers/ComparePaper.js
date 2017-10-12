@@ -3,12 +3,11 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import { setUnit } from '../actions';
-import { calculateProductSum, getUnit } from '../selectors';
+import { getUnit } from '../selectors';
 
 import ComparePaper from '../components/ComparePaper';
 
 const mapStateToProps = state => ({
-  calculated: calculateProductSum(state),
   unit: getUnit(state),
 });
 
