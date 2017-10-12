@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import ComparePaper from '../ComparePaper/containers/ComparePaper';
+import ComparePaper from '../ComparePaper/containers/Form';
 import ComparePaperResult from '../ComparePaper/containers/ComparePaperResult';
 
 export const Root = StackNavigator(
