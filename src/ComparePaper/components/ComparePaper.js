@@ -1,48 +1,9 @@
 // @flow
 import React from 'react';
 import { Field } from 'redux-form';
-import {
-  StyleSheet,
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  View,
-  Image,
-} from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
-class ComparisonInput extends React.Component {
-  render() {
-    const {
-      input: { onChange, ...restInput },
-      meta: { touched, error, warning },
-      refField,
-      returnKeyType,
-      keyboardType,
-      onEnter,
-      selectionColor,
-    } = this.props;
-
-    return (
-      <View>
-        <TextInput
-          ref={refField}
-          underlineColorAndroid="transparent"
-          keyboardType={keyboardType}
-          returnKeyType={returnKeyType}
-          style={styles.textInput}
-          onChangeText={onChange}
-          onSubmitEditing={onEnter}
-          selectionColor={selectionColor}
-          {...restInput}
-        />
-        {touched && ((error && <Text>{error}</Text>) || (warning && <Text>{warning}</Text>))}
-      </View>
-    );
-  }
-}
+import ComparisonInput from './ComparisonInput';
 
 export default class ComparePaper extends React.Component {
   render() {
@@ -64,8 +25,8 @@ export default class ComparePaper extends React.Component {
                 withRef
                 placeholder={'Teste'}
                 name="rollAmount"
-                keyboardType="numeric"
-                returnKeyType="next"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 selectionColor={'#0D47A1'}
                 component={ComparisonInput}
                 onEnter={() => this.rollWidth.getRenderedComponent().refs.rollWidth.focus()}
@@ -78,8 +39,8 @@ export default class ComparePaper extends React.Component {
                 refField="rollWidth"
                 withRef
                 name="rollWidth"
-                keyboardType="numeric"
-                returnKeyType="next"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 selectionColor={'#0D47A1'}
                 component={ComparisonInput}
                 onEnter={() => this.widthUnit.getRenderedComponent().refs.widthUnit.focus()}
@@ -115,8 +76,8 @@ export default class ComparePaper extends React.Component {
                 refField="price"
                 withRef
                 name="price"
-                keyboardType="numeric"
-                returnKeyType="next"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 selectionColor={'#0D47A1'}
                 component={ComparisonInput}
                 onEnter={() => this.price.getRenderedComponent().refs.price.focus()}
@@ -130,8 +91,8 @@ export default class ComparePaper extends React.Component {
               <Text style={[styles.inputLabel, styles.inputTwo]}>Quantidade de Rolos</Text>
               <Field
                 name="rollAmount"
-                keyboardType="numeric"
-                returnKeyType="next"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 component={ComparisonInput}
               />
             </View>
@@ -139,8 +100,8 @@ export default class ComparePaper extends React.Component {
               <Text style={[styles.inputLabel, styles.inputTwo]}>Comprimento do Rolo</Text>
               <Field
                 name="rollWidth"
-                keyboardType="numeric"
-                returnKeyType="next"
+                keyboardType={'numeric'}
+                returnKeyType={'next'}
                 component={ComparisonInput}
               />
             </View>
@@ -163,8 +124,8 @@ export default class ComparePaper extends React.Component {
               <Text style={[styles.inputLabel, styles.inputTwo]}>Preço</Text>
               <Field
                 name="price"
-                keyboardType="numeric"
-                returnKeyType="go"
+                keyboardType={'numeric'}
+                returnKeyType={'go'}
                 component={ComparisonInput}
               />
             </View>
