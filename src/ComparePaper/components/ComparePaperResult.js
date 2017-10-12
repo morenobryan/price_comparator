@@ -8,11 +8,19 @@ const ComparePaperResult = props => {
     <View style={styles.container}>
       <View style={[styles.subContainer, styles.subContainerOne]}>
         <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
-        <Text style={styles.inputOne}>{props.calculated}</Text>
+        <Text style={styles.inputOne}>{props.productOneResult}</Text>
       </View>
       <View style={[styles.subContainer, styles.subContainerTwo]}>
         <Text style={[styles.title, styles.titleTwo]}>PRODUTO 2</Text>
-        <Text style={styles.inputTwo}>{props.calculated}</Text>
+        <Text style={styles.inputTwo}>{props.productTwoResult}</Text>
+      </View>
+
+      <View style={[styles.subContainer, styles.subContainerTwo]}>
+        <Text style={styles.inputTwo}>Melhor produto: {props.bestProduct}</Text>
+      </View>
+
+      <View style={[styles.subContainer, styles.subContainerTwo]}>
+        <Text style={styles.inputTwo}>Economia de: {props.economyPercentage} %</Text>
       </View>
 
       <TouchableOpacity

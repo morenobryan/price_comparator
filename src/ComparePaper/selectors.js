@@ -15,3 +15,34 @@ export const calculateProductSum = state => {
 
 export const getUi = createSelector([ui], ui => ui);
 export const getUnit = createSelector([getUi], ui => ui.unit || 'm');
+
+export const calculatePricePerUnitProductOne = state => {
+  const rollAmount = formProductOne(state, 'rollAmount');
+  const rollWidth = formProductOne(state, 'rollWidth');
+  const price = formProductOne(state, 'price');
+
+  return rollAmount * rollWidth / price;
+};
+
+export const calculatePricePerUnitProductTwo = state => {
+  const rollAmount = formProductTwo(state, 'rollAmount');
+  const rollWidth = formProductTwo(state, 'rollWidth');
+  const price = formProductTwo(state, 'price');
+
+  return rollAmount * rollWidth / price;
+};
+
+export const calculateBestProduct = createSelector(
+  [calculatePricePerUnitProductOne, calculatePricePerUnitProductTwo],
+  (priceOne, priceTwo) => Math.min(priceOne, priceTwo)
+);
+
+export const calculateEconomyPercentage = createSelector(
+  [calculatePricePerUnitProductOne, calculatePricePerUnitProductTwo],
+  (priceOne, priceTwo) => {
+    const worstPrice = Math.max(priceOne, priceTwo);
+    const bestPrice = Math.min(priceOne, priceTwo);
+
+    return (worstPrice - bestPrice) / worstPrice * 100;
+  }
+);
