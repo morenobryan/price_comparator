@@ -2,8 +2,6 @@
 import { connect } from 'react-redux';
 import { isInvalid, isPristine, isSubmitting } from 'redux-form';
 
-import { validateComparePaperForm } from '../validation';
-import { getFormsStatus } from '../selectors';
 import FormComponent from './FormComponent';
 
 const mapStateToProps = state => ({

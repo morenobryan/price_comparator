@@ -22,7 +22,8 @@ export const validateNumeric = (fieldsToValidate, values) => {
   const errors = {};
 
   fieldsToValidate.forEach(key => {
-    if (Number.isNaN(Number(values[key])) || Number(values[key]) <= 0) {
+    const number = Number(values[key]);
+    if (Number.isNaN(number) || !Number.isFinite(number) || number <= 0) {
       errors[key] = numberError;
     }
   });

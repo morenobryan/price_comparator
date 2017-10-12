@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form';
 
 import { setUnit } from '../actions';
 import { getUnit } from '../selectors';
-import { validateComparePaperForm } from '../validation';
+import { validateComparePaperForm } from '../validators';
 
 import ProductOne from '../components/ProductForm';
 
