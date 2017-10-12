@@ -46,7 +46,9 @@ class ComparisonInput extends React.Component {
 
 export default class ComparePaper extends React.Component {
   render() {
-    const { handleSubmit, invalid, pristine, submitting, calculate, navigation } = this.props;
+    const { handleSubmit, invalid, pristine, submitting, calculate, navigation, unit } = this.props;
+
+    const disabledSubmit = () => invalid || pristine || submitting;
 
     return (
       <View style={styles.container}>
@@ -86,14 +88,22 @@ export default class ComparePaper extends React.Component {
             <View style={styles.inputContainer}>
               <Text style={styles.inputLabel}>Unidade</Text>
               <TouchableOpacity
-                style={[styles.unitButton, styles.unitButtonOne]}
-                onPress={this._onPressButton}
+                style={
+                  unit === 'm'
+                    ? [styles.unitButton, styles.unitButtonOne]
+                    : [styles.unitButton, styles.unitButtonOneDisabled]
+                }
+                onPress={this.props.setMeterUnit}
               >
                 <Text style={[styles.unitLabel, styles.unitLabelOne]}>m</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.unitButton, styles.unitButtonOne]}
-                onPress={this._onPressButton}
+                style={
+                  unit === 'cm'
+                    ? [styles.unitButton, styles.unitButtonOne]
+                    : [styles.unitButton, styles.unitButtonOneDisabled]
+                }
+                onPress={this.props.setCentimeterUnit}
               >
                 <Text style={[styles.unitLabel, styles.unitLabelOne]}>cm</Text>
               </TouchableOpacity>
@@ -138,19 +148,19 @@ export default class ComparePaper extends React.Component {
               <Text style={[styles.inputLabel, styles.inputTwo]}>Unidade</Text>
               <TouchableOpacity
                 style={[styles.unitButton, styles.unitButtonTwo]}
-                onPress={this._onPressButton}
+                onPress={this.props.setMeterUnit}
               >
                 <Text style={[styles.unitLabel, styles.unitLabelTwo]}>m</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.unitButton, styles.unitButtonTwo]}
-                onPress={this._onPressButton}
+                onPress={this.props.setCentimeterUnit}
               >
                 <Text style={[styles.unitLabel, styles.unitLabelTwo]}>cm</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.inputContainer}>
-              <Text style={[styles.inputLabel, styles.inputTwo]}>Precinho</Text>
+              <Text style={[styles.inputLabel, styles.inputTwo]}>Preço</Text>
               <Field
                 name="price"
                 keyboardType="numeric"
@@ -161,9 +171,9 @@ export default class ComparePaper extends React.Component {
           </View>
 
           <TouchableOpacity
-            style={styles.submitButton}
+            style={disabledSubmit() ? styles.disabledSubmitButton : styles.submitButton}
             onPress={() => navigation.navigate('ComparePaperResult')}
-            disabled={invalid || pristine || submitting}
+            disabled={disabledSubmit()}
           >
             <Text style={[styles.unitLabel, styles.unitLabelOne]}>Comparar</Text>
           </TouchableOpacity>
@@ -214,16 +224,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#1976D2',
     borderColor: '#1565C0',
   },
+  unitButtonOneDisabled: {
+    backgroundColor: '#64B5F6',
+    borderColor: '#42A5F5',
+  },
   unitButtonTwo: {
     backgroundColor: '#0288D1',
     borderColor: '#0277BD',
   },
-
+  unitButtonTwoDisabled: {
+    backgroundColor: '#4FC3F7',
+    borderColor: '#29B6F6',
+  },
   unitLabel: {
     fontFamily: 'proximaNovaAltRegular',
   },
   unitLabelOne: {
     color: '#B3E5FC',
+  },
+  unitLabelDisabled: {
+    color: '#F5F5F5',
   },
   unitLabelTwo: {
     color: '#B3E5FC',
@@ -261,6 +281,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     backgroundColor: '#0D47A1',
+  },
+  disabledSubmitButton: {
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#64B5F6',
   },
   submitText: {},
 });

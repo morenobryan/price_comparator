@@ -2,19 +2,19 @@
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
-import { calculate } from '../actions';
-import { calculateProductSum } from '../selectors';
+import { setUnit } from '../actions';
+import { calculateProductSum, getUnit } from '../selectors';
 
 import ComparePaper from '../components/ComparePaper';
 
 const mapStateToProps = state => ({
   calculated: calculateProductSum(state),
+  unit: getUnit(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  calculate: () => {
-    dispatch(calculate());
-  },
+  setCentimeterUnit: () => dispatch(setUnit('cm')),
+  setMeterUnit: () => dispatch(setUnit('m')),
 });
 
 const Component = connect(mapStateToProps, mapDispatchToProps)(ComparePaper);
