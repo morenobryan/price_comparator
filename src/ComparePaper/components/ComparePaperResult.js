@@ -6,17 +6,25 @@ import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'reac
 const ComparePaperResult = props => {
   return (
     <View style={styles.container}>
-      <View style={[styles.subContainer, styles.subContainerOne]}>
+      <View
+        style={[
+          styles.subContainer,
+          styles.subContainerOne,
+          props.bestProduct === props.productOneResult ? styles.subContainerBest : undefined,
+        ]}
+      >
         <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
         <Text style={styles.inputOne}>{props.productOneResult}</Text>
       </View>
-      <View style={[styles.subContainer, styles.subContainerTwo]}>
+      <View
+        style={[
+          styles.subContainer,
+          styles.subContainerTwo,
+          props.bestProduct === props.productTwoResult ? styles.subContainerBest : undefined,
+        ]}
+      >
         <Text style={[styles.title, styles.titleTwo]}>PRODUTO 2</Text>
         <Text style={styles.inputTwo}>{props.productTwoResult}</Text>
-      </View>
-
-      <View style={[styles.subContainer, styles.subContainerTwo]}>
-        <Text style={styles.inputTwo}>Melhor produto: {props.bestProduct}</Text>
       </View>
 
       <View style={[styles.subContainer, styles.subContainerTwo]}>
@@ -56,6 +64,9 @@ const styles = StyleSheet.create({
   },
   subContainerTwo: {
     backgroundColor: '#039BE5',
+  },
+  subContainerBest: {
+    backgroundColor: '#000',
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
