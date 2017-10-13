@@ -8,15 +8,15 @@ type Props = {
   input: {
     onChange: any => void,
   },
+  keyboardType: KeyboardType,
   meta: {
     touched: boolean,
     error: string,
     warning: string,
   },
-  refField: any,
-  keyboardType: KeyboardType,
-  returnKeyType: ReturnKeyType,
   onEnter: () => void,
+  refField: any,
+  returnKeyType: ReturnKeyType,
   selectionColor: string,
 };
 
@@ -24,40 +24,53 @@ export default class ComparisonInput extends React.Component<Props> {
   render() {
     const {
       input: { onChange, ...restInput },
+      keyboardType,
       meta: { touched, error, warning },
+      onEnter,
       refField,
       returnKeyType,
-      keyboardType,
-      onEnter,
       selectionColor,
     } = this.props;
 
     return (
-      <View>
+      <View style={styles.container}>
         <TextInput
-          ref={refField}
-          underlineColorAndroid="transparent"
           keyboardType={keyboardType}
-          returnKeyType={returnKeyType}
-          style={styles.textInput}
           onChangeText={onChange}
           onSubmitEditing={onEnter}
+          ref={refField}
+          returnKeyType={returnKeyType}
           selectionColor={selectionColor}
+          style={[styles.input, touched && error ? styles.errorInput : undefined]}
+          underlineColorAndroid="transparent"
           {...restInput}
         />
-        {touched && ((error && <Text>{error}</Text>) || (warning && <Text>{warning}</Text>))}
+        {touched &&
+          ((error && <Text style={styles.error}>{error}</Text>) ||
+            (warning && <Text>{warning}</Text>))}
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  textInput: {
+  container: {
+    flex: 0.6,
+  },
+  input: {
     borderBottomWidth: 1,
     borderColor: '#B3E5FC',
     color: '#B3E5FC',
-    flex: 0.5,
+    flex: 1,
     fontFamily: 'proximaNovaAltRegular',
     padding: 0,
+  },
+  errorInput: {
+    borderColor: '#e53935',
+  },
+  error: {
+    fontFamily: 'proximaNovaAltRegular',
+    textAlign: 'center',
+    color: '#e53935',
   },
 });

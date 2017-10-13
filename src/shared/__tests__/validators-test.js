@@ -1,7 +1,7 @@
 import * as validators from '../validators';
 
 const requiredError = 'Este campo é obrigatório';
-const numberError = 'Somente números positivos são permitidos neste campo';
+const numberError = 'Somente números permitidos';
 
 const fieldsToValidate = ['one', 'two', 'three'];
 

@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInput from './ComparisonInput';
+import UnitSwitcher from './UnitSwitcher';
 
 type Props = {
   productName: string,
@@ -24,10 +25,10 @@ export default class ComparePaper extends React.Component<Props> {
 
   render() {
     return (
-      <View style={[styles.subContainer, styles.subContainerOne]}>
-        <Text style={[styles.title, styles.titleOne]}>{this.props.productName}</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>{this.props.productName}</Text>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Quantidade de Rolos</Text>
+          <Text style={styles.inputLabel}>Qtde de Rolos</Text>
           <Field
             ref={this.setRollAmountRef}
             refField="rollAmount"
@@ -43,7 +44,7 @@ export default class ComparePaper extends React.Component<Props> {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Comprimento do Rolo</Text>
+          <Text style={styles.inputLabel}>Comprimento</Text>
           <Field
             ref={this.setRollWidthRef}
             refField="rollWidth"
@@ -53,32 +54,23 @@ export default class ComparePaper extends React.Component<Props> {
             returnKeyType="next"
             selectionColor="#0D47A1"
             component={ComparisonInput}
-            onEnter={() =>
-              this.widthUnit && this.widthUnit.getRenderedComponent().refs.widthUnit.focus()}
+            onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Unidade</Text>
-          <TouchableOpacity
-            style={
-              this.props.unit === 'm'
-                ? [styles.unitButton, styles.unitButtonOne]
-                : [styles.unitButton, styles.unitButtonOneDisabled]
-            }
-            onPress={this.props.setMeterUnit}
-          >
-            <Text style={[styles.unitLabel, styles.unitLabelOne]}>m</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={
-              this.props.unit === 'cm'
-                ? [styles.unitButton, styles.unitButtonOne]
-                : [styles.unitButton, styles.unitButtonOneDisabled]
-            }
-            onPress={this.props.setCentimeterUnit}
-          >
-            <Text style={[styles.unitLabel, styles.unitLabelOne]}>cm</Text>
-          </TouchableOpacity>
+          <View style={styles.unitContainer}>
+            <UnitSwitcher
+              name="m"
+              selected={this.props.unit === 'm'}
+              onPress={this.props.setMeterUnit}
+            />
+            <UnitSwitcher
+              name="cm"
+              selected={this.props.unit === 'cm'}
+              onPress={this.props.setCentimeterUnit}
+            />
+          </View>
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Preço</Text>
@@ -101,68 +93,20 @@ export default class ComparePaper extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#1E88E5',
-  },
-  subContainer: {
     padding: 20,
     flex: 0.5,
     alignSelf: 'stretch',
-  },
-  subContainerOne: {
     backgroundColor: '#1E88E5',
   },
-  subContainerTwo: {
-    backgroundColor: '#039BE5',
+  unitContainer: {
+    flex: 0.6,
+    flexDirection: 'row',
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
     fontSize: 30,
     marginBottom: 30,
-  },
-  titleOne: {
     color: '#0D47A1',
-  },
-  titleTwo: {
-    color: '#01579B',
-  },
-  unitButton: {
-    marginRight: 5,
-    marginLeft: 5,
-    paddingTop: 2,
-    paddingRight: 7,
-    paddingBottom: 4,
-    paddingLeft: 7,
-    borderWidth: 1,
-    borderRadius: 5,
-  },
-  unitButtonOne: {
-    backgroundColor: '#1976D2',
-    borderColor: '#1565C0',
-  },
-  unitButtonOneDisabled: {
-    backgroundColor: '#64B5F6',
-    borderColor: '#42A5F5',
-  },
-  unitButtonTwo: {
-    backgroundColor: '#0288D1',
-    borderColor: '#0277BD',
-  },
-  unitButtonTwoDisabled: {
-    backgroundColor: '#4FC3F7',
-    borderColor: '#29B6F6',
-  },
-  unitLabel: {
-    fontFamily: 'proximaNovaAltRegular',
-  },
-  unitLabelOne: {
-    color: '#B3E5FC',
-  },
-  unitLabelDisabled: {
-    color: '#F5F5F5',
-  },
-  unitLabelTwo: {
-    color: '#B3E5FC',
   },
   inputContainer: {
     flex: 1,
@@ -171,37 +115,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputLabel: {
-    flex: 0.5,
+    flex: 0.4,
     color: '#B3E5FC',
     textAlign: 'right',
     marginRight: 10,
     fontFamily: 'proximaNovaAltRegular',
   },
-  textInput: {
-    borderBottomWidth: 1,
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
-    flex: 0.5,
-    fontFamily: 'proximaNovaAltRegular',
-    padding: 0,
-  },
-  inputOne: {
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
-  },
-  inputTwo: {
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
-  },
-  submitButton: {
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#0D47A1',
-  },
-  disabledSubmitButton: {
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#64B5F6',
-  },
-  submitText: {},
 });

@@ -1,5 +1,5 @@
 const requiredError = 'Este campo é obrigatório';
-const numberError = 'Somente números positivos são permitidos neste campo';
+const numberError = 'Somente números permitidos';
 
 export const validateRequiredAndNumber = (fieldsToValidate, values) => ({
   ...validateNumeric(fieldsToValidate, values),
