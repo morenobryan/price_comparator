@@ -55,15 +55,13 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     flex: 0.2,
     flexDirection: 'row',
-    marginTop: 20,
-    marginBottom: 20,
+    justifyContent: 'space-between',
+    padding: 20,
   },
   button: {
     alignItems: 'center',
     borderRadius: 30,
     padding: 20,
-    marginLeft: 20,
-    marginRight: 20,
     marginTop: 10,
     marginBottom: 10,
     backgroundColor: '#0D47A1',

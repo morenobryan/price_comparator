@@ -13,7 +13,7 @@ const ComparePaperResult = ({ name, result }: Props) => {
       <Text style={styles.title}>{name}</Text>
       <View>
         <Text style={styles.bigText}>R$ {result}</Text>
-        <Text style={styles.text}>Custo deste produto por metro</Text>
+        <Text style={styles.text}>é o custo deste produto por metro</Text>
       </View>
     </View>
   );
@@ -26,12 +26,11 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingBottom: 30,
     flex: 0.4,
-    alignSelf: 'stretch',
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
     fontSize: 30,
-    marginBottom: 30,
+    marginBottom: 20,
     color: '#0D47A1',
   },
   bigText: {

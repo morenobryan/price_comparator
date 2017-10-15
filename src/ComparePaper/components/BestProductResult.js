@@ -12,13 +12,13 @@ const BestProductResult = ({ name, result, economyPercentage }: Props) => {
   return (
     <View style={styles.subContainer}>
       <Text style={styles.title}>{name}</Text>
-      <View>
+      <View style={styles.textContainer}>
         <Text style={styles.bigText}>R$ {result}</Text>
-        <Text style={styles.text}>Custo deste produto por metro</Text>
+        <Text style={styles.text}>é o custo deste produto por metro</Text>
       </View>
       <View>
         <Text style={styles.bigText}>{economyPercentage}%</Text>
-        <Text style={styles.text}>Economia comprando este produto</Text>
+        <Text style={styles.text}>de economia comprando este produto</Text>
       </View>
     </View>
   );
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
   subContainer: {
     padding: 20,
     paddingBottom: 30,
-    alignSelf: 'stretch',
     backgroundColor: '#0D47A1',
     flex: 0.6,
     elevation: 10,
@@ -40,6 +39,9 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 30,
     color: '#42A5F5',
+  },
+  textContainer: {
+    marginBottom: 20,
   },
   bigText: {
     fontSize: 35,
