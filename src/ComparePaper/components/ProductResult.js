@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FormattedCurrency } from 'react-native-globalize';
 
 type Props = {
   name: string,
@@ -12,7 +13,7 @@ const ComparePaperResult = ({ name, result }: Props) => {
     <View style={styles.subContainer}>
       <Text style={styles.title}>{name}</Text>
       <View>
-        <Text style={styles.bigText}>R$ {result}</Text>
+        <FormattedCurrency value={result} style={styles.bigText} />
         <Text style={styles.text}>é o custo deste produto por metro</Text>
       </View>
     </View>
@@ -36,11 +37,11 @@ const styles = StyleSheet.create({
   bigText: {
     fontSize: 35,
     color: '#90CAF9',
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSemibold',
   },
   text: {
     color: '#90CAF9',
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSemibold',
     fontSize: 18,
   },
 });

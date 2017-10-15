@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { FormattedCurrency, FormattedNumber } from 'react-native-globalize';
 
 type Props = {
   name: string,
@@ -13,11 +14,11 @@ const BestProductResult = ({ name, result, economyPercentage }: Props) => {
     <View style={styles.subContainer}>
       <Text style={styles.title}>{name}</Text>
       <View style={styles.textContainer}>
-        <Text style={styles.bigText}>R$ {result}</Text>
+        <FormattedCurrency value={result} style={styles.bigText} />
         <Text style={styles.text}>é o custo deste produto por metro</Text>
       </View>
       <View>
-        <Text style={styles.bigText}>{economyPercentage}%</Text>
+        <FormattedNumber value={economyPercentage} numberStyle="percent" style={styles.bigText} />
         <Text style={styles.text}>de economia comprando este produto</Text>
       </View>
     </View>
@@ -46,11 +47,11 @@ const styles = StyleSheet.create({
   bigText: {
     fontSize: 35,
     color: '#90CAF9',
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSemibold',
   },
   text: {
     color: '#90CAF9',
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSemibold',
     fontSize: 18,
   },
 });

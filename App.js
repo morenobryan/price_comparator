@@ -4,6 +4,8 @@ import store from './src/store';
 import { AppLoading, Font } from 'expo';
 import { StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
+import { FormattedWrapper } from 'react-native-globalize';
+import { Globalize } from 'react-native-globalize';
 
 export default class App extends React.Component {
   state = {
@@ -12,7 +14,12 @@ export default class App extends React.Component {
 
   componentWillMount() {
     this._loadAssetsAsync();
+    this._loadCldrData();
   }
+
+  _loadCldrData = () => {
+    Globalize.load([require('./assets/cldr-data/pt/currencies.json')]);
+  };
 
   _loadAssetsAsync = async () => {
     await Font.loadAsync({
@@ -29,7 +36,9 @@ export default class App extends React.Component {
     }
     return (
       <Provider store={store}>
-        <AppNavigator />
+        <FormattedWrapper locale="pt" currency="BRL">
+          <AppNavigator />
+        </FormattedWrapper>
       </Provider>
     );
   }
