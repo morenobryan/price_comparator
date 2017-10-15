@@ -14,7 +14,7 @@ export const calculatePricePerUnitProductOne = state => {
   const rollWidth = formProductOne(state, 'rollWidth');
   const price = formProductOne(state, 'price');
 
-  return price / rollAmount * rollWidth;
+  return price / (rollAmount * rollWidth);
 };
 
 export const calculatePricePerUnitProductTwo = state => {
@@ -22,7 +22,7 @@ export const calculatePricePerUnitProductTwo = state => {
   const rollWidth = formProductTwo(state, 'rollWidth');
   const price = formProductTwo(state, 'price');
 
-  return price / rollAmount * rollWidth;
+  return price / (rollAmount * rollWidth);
 };
 
 export const calculateBestProduct = createSelector(
@@ -36,6 +36,6 @@ export const calculateEconomyPercentage = createSelector(
     const worstPrice = Math.max(priceOne, priceTwo);
     const bestPrice = Math.min(priceOne, priceTwo);
 
-    return (worstPrice - bestPrice) / worstPrice * 100;
+    return (worstPrice - bestPrice) / worstPrice;
   }
 );
