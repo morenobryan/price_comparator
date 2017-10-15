@@ -58,10 +58,11 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     marginTop: 10,
-    marginBottom: 0,
+    marginBottom: 10,
   },
   enabledSubmitButton: {
     backgroundColor: '#0D47A1',
+    elevation: 3,
   },
   disabledSubmitButton: {
     backgroundColor: '#90CAF9',

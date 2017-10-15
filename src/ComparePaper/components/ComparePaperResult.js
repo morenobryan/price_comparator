@@ -1,48 +1,45 @@
 // @flow
 import React from 'react';
-import { Field } from 'redux-form';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import ProductResult from './ProductResult';
+import BestProductResult from './BestProductResult';
 
 const ComparePaperResult = props => {
   return (
     <View style={styles.container}>
-      <View
-        style={[
-          styles.subContainer,
-          styles.subContainerOne,
-          props.bestProduct === props.productOneResult ? styles.subContainerBest : undefined,
-        ]}
-      >
-        <Text style={[styles.title, styles.titleOne]}>PRODUTO 1</Text>
-        <Text style={styles.inputOne}>{props.productOneResult}</Text>
-      </View>
-      <View
-        style={[
-          styles.subContainer,
-          styles.subContainerTwo,
-          props.bestProduct === props.productTwoResult ? styles.subContainerBest : undefined,
-        ]}
-      >
-        <Text style={[styles.title, styles.titleTwo]}>PRODUTO 2</Text>
-        <Text style={styles.inputTwo}>{props.productTwoResult}</Text>
-      </View>
+      {props.bestProduct === props.productOneResult ? (
+        <BestProductResult
+          name="PRODUTO 1"
+          result={props.productOneResult}
+          economyPercentage={props.economyPercentage}
+        />
+      ) : (
+        <ProductResult name="PRODUTO 1" result={props.productOneResult} />
+      )}
+      {props.bestProduct === props.productTwoResult ? (
+        <BestProductResult
+          name="PRODUTO 2"
+          result={props.productTwoResult}
+          economyPercentage={props.economyPercentage}
+        />
+      ) : (
+        <ProductResult name="PRODUTO 2" result={props.productTwoResult} />
+      )}
 
-      <View style={[styles.subContainer, styles.subContainerTwo]}>
-        <Text style={styles.inputTwo}>Economia de: {props.economyPercentage} %</Text>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => props.navigation.navigate('ComparePaper')}
+        >
+          <Text style={styles.buttonText}>EDITAR</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => props.navigation.navigate('ComparePaperResult')}
+        >
+          <Text style={styles.buttonText}>NOVA COMPARAÇÃO</Text>
+        </TouchableOpacity>
       </View>
-
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={() => props.navigation.navigate('ComparePaper')}
-      >
-        <Text style={[styles.unitLabel, styles.unitLabelTwo]}>Voltar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={() => props.navigation.navigate('ComparePaperResult')}
-      >
-        <Text style={[styles.unitLabel, styles.unitLabelTwo]}>Comparar</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -53,92 +50,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1E88E5',
+    paddingTop: 30,
   },
-  subContainer: {
-    padding: 20,
-    flex: 0.5,
-    alignSelf: 'stretch',
-  },
-  subContainerOne: {
-    backgroundColor: '#1E88E5',
-  },
-  subContainerTwo: {
-    backgroundColor: '#039BE5',
-  },
-  subContainerBest: {
-    backgroundColor: '#000',
-  },
-  title: {
-    fontFamily: 'proximaNovaAltBold',
-    fontSize: 30,
-    marginBottom: 30,
-  },
-  titleOne: {
-    color: '#0D47A1',
-  },
-  titleTwo: {
-    color: '#01579B',
-  },
-  unitButton: {
-    marginRight: 5,
-    marginLeft: 5,
-    paddingTop: 2,
-    paddingRight: 7,
-    paddingBottom: 4,
-    paddingLeft: 7,
-    borderWidth: 1,
-    borderRadius: 5,
-  },
-  unitButtonOne: {
-    backgroundColor: '#1976D2',
-    borderColor: '#1565C0',
-  },
-  unitButtonTwo: {
-    backgroundColor: '#0288D1',
-    borderColor: '#0277BD',
-  },
-  unitLabel: {
-    fontFamily: 'proximaNovaAltRegular',
-  },
-  unitLabelOne: {
-    color: '#B3E5FC',
-  },
-  unitLabelTwo: {
-    color: '#B3E5FC',
-  },
-  inputContainer: {
-    flex: 1,
+  buttonsContainer: {
+    flex: 0.2,
     flexDirection: 'row',
-    justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  button: {
     alignItems: 'center',
-  },
-  inputLabel: {
-    flex: 0.5,
-    color: '#B3E5FC',
-    textAlign: 'right',
-    marginRight: 10,
-    fontFamily: 'proximaNovaAltRegular',
-  },
-  textInput: {
-    borderBottomWidth: 1,
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
-    flex: 0.5,
-    fontFamily: 'proximaNovaAltRegular',
-    padding: 0,
-  },
-  inputOne: {
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
-  },
-  inputTwo: {
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
-  },
-  submitButton: {
-    alignItems: 'center',
-    padding: 10,
+    borderRadius: 30,
+    padding: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 10,
+    marginBottom: 10,
     backgroundColor: '#0D47A1',
+    elevation: 3,
+    height: 55,
   },
-  submitText: {},
+  buttonText: {
+    color: '#B3E5FC',
+    fontFamily: 'proximaNovaAltRegular',
+  },
 });
