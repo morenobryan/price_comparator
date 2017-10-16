@@ -13,7 +13,7 @@ const ComparePaperResult = ({ name, result }: Props) => {
     <View style={styles.subContainer}>
       <Text style={styles.title}>{name}</Text>
       <View>
-        <FormattedCurrency value={result} style={styles.bigText} />
+        <FormattedCurrency value={result} maximumFractionDigits={4} style={styles.bigText} />
         <Text style={styles.text}>é o custo deste produto por metro</Text>
       </View>
     </View>
