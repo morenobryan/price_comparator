@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   disabledSubmitButton: {
-    backgroundColor: '#90CAF9',
+    backgroundColor: '#ccc',
   },
 });

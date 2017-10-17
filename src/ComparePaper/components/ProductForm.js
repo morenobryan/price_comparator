@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Field } from 'redux-form';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInput from './ComparisonInput';
 import UnitSwitcher from './UnitSwitcher';
