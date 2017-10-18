@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ProductOne from './ProductOne';
 import ProductTwo from './ProductTwo';
+import CompareButton from '../../shared/components/CompareButton';
 
 type Props = {
   disabledSubmit: boolean,
@@ -19,19 +20,12 @@ export default class ComparePaper extends React.Component<Props> {
         <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
           <ProductOne />
           <ProductTwo />
-
-          <TouchableOpacity
-            style={[
-              styles.submitButton,
-              disabledSubmit ? styles.disabledSubmitButton : styles.enabledSubmitButton,
-            ]}
-            onPress={() => navigation.navigate('ComparePaperResult')}
+          <CompareButton
             disabled={disabledSubmit}
-          >
-            <Text style={disabledSubmit ? styles.disabledSubmitLabel : styles.submitLabel}>
-              COMPARAR
-            </Text>
-          </TouchableOpacity>
+            navigation={navigation}
+            nextPage="ComparePaperResult"
+            label="COMPARAR"
+          />
         </KeyboardAwareScrollView>
       </View>
     );
@@ -42,29 +36,5 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#1E88E5',
     flex: 1,
-  },
-  submitLabel: {
-    color: '#B3E5FC',
-    fontFamily: 'proximaNovaAltRegular',
-  },
-  disabledSubmitLabel: {
-    color: '#fff',
-    fontFamily: 'proximaNovaAltRegular',
-  },
-  submitButton: {
-    alignItems: 'center',
-    borderRadius: 30,
-    padding: 20,
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  enabledSubmitButton: {
-    backgroundColor: '#0D47A1',
-    elevation: 3,
-  },
-  disabledSubmitButton: {
-    backgroundColor: '#ccc',
   },
 });
