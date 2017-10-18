@@ -5,8 +5,8 @@ import { FormattedCurrency, FormattedNumber } from 'react-native-globalize';
 
 type Props = {
   name: string,
-  result: string,
-  economyPercentage: string,
+  result: number,
+  economyPercentage: number,
 };
 
 const BestProductResult = ({ name, result, economyPercentage }: Props) => {

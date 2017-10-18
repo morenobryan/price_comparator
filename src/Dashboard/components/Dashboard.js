@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import NavButton from './NavButton';
@@ -8,7 +9,13 @@ const toiletPaper = '\uf102';
 const drink = '\uf103';
 const water = '\uf104';
 
-export default ({ navigation }) => (
+type Props = {
+  navigation: {
+    navigate: string => void,
+  },
+};
+
+export default ({ navigation }: Props) => (
   <View style={styles.container}>
     <Text style={styles.title}>Escolha a categoria</Text>
     <View style={styles.buttonContainer}>

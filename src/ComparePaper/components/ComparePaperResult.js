@@ -4,38 +4,51 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ProductResult from './ProductResult';
 import BestProductResult from './BestProductResult';
 
-const ComparePaperResult = props => {
+type Props = {
+  navigation: {
+    navigate: string => void,
+  },
+  bestProduct: number,
+  economyPercentage: number,
+  productOneResult: number,
+  productTwoResult: number,
+};
+
+const ComparePaperResult = ({
+  navigation,
+  bestProduct,
+  productOneResult,
+  productTwoResult,
+  economyPercentage,
+}: Props) => {
   return (
     <View style={styles.container}>
-      {props.bestProduct === props.productOneResult ? (
+      {bestProduct === productOneResult ? (
         <BestProductResult
           name="PRODUTO 1"
-          result={props.productOneResult}
-          economyPercentage={props.economyPercentage}
+          result={productOneResult}
+          economyPercentage={economyPercentage}
         />
       ) : (
-        <ProductResult name="PRODUTO 1" result={props.productOneResult} />
+        <ProductResult name="PRODUTO 1" result={productOneResult} />
       )}
-      {props.bestProduct === props.productTwoResult ? (
+      {bestProduct === productTwoResult ? (
         <BestProductResult
           name="PRODUTO 2"
-          result={props.productTwoResult}
-          economyPercentage={props.economyPercentage}
+          result={productTwoResult}
+          economyPercentage={economyPercentage}
         />
       ) : (
-        <ProductResult name="PRODUTO 2" result={props.productTwoResult} />
+        <ProductResult name="PRODUTO 2" result={productTwoResult} />
       )}
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => props.navigation.navigate('ComparePaper')}
-        >
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ComparePaper')}>
           <Text style={styles.buttonText}>EDITAR</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => props.navigation.navigate('ComparePaperResult')}
+          onPress={() => navigation.navigate('ComparePaperResult')}
         >
           <Text style={styles.buttonText}>NOVA COMPARAÇÃO</Text>
         </TouchableOpacity>

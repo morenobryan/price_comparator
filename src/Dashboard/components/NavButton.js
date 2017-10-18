@@ -1,16 +1,25 @@
+// @flow
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-export default ({ navigation, backgroundColor, color, iconColor, icon, text, pageName }) => {
+type Props = {
+  navigation: {
+    navigate: string => void,
+  },
+  backgroundColor: string,
+  color: string,
+  iconColor: string,
+  icon: string,
+  text: string,
+  pageName: string,
+};
+
+export default ({ navigation, backgroundColor, color, iconColor, icon, text, pageName }: Props) => {
   const styles = StyleSheet.create({
     navButton: {
       backgroundColor,
       padding: 30,
       flexDirection: 'row',
-      // marginTop: -1,
-      // borderBottomWidth: 1,
-      // borderTopWidth: 1,
-      // borderColor: '#3F51B5',
       elevation: 3,
     },
     buttonText: {

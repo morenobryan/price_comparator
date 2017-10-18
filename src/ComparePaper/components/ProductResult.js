@@ -5,7 +5,7 @@ import { FormattedCurrency } from 'react-native-globalize';
 
 type Props = {
   name: string,
-  result: string,
+  result: number,
 };
 
 const ComparePaperResult = ({ name, result }: Props) => {
