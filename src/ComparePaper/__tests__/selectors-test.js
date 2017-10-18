@@ -1,11 +1,6 @@
 import * as selectors from '../selectors';
 
 const exampleState = {
-  comparePaper: {
-    ui: {
-      unit: 'cm',
-    },
-  },
   form: {
     comparePaperProductOne: {
       values: {
@@ -25,29 +20,23 @@ const exampleState = {
 };
 
 const emptyExample = {
-  comparePaper: {
-    ui: {
-      unit: undefined,
+  form: {
+    comparePaperProductOne: {
+      values: {
+        price: undefined,
+        rollAmount: undefined,
+        rollWidth: undefined,
+      },
+    },
+    comparePaperProductTwo: {
+      values: {
+        price: undefined,
+        rollAmount: undefined,
+        rollWidth: undefined,
+      },
     },
   },
 };
-
-/* UI */
-describe('getUi', () => {
-  it('should get the correct ui node', () => {
-    expect(selectors.getUi(exampleState)).toEqual(exampleState.comparePaper.ui);
-  });
-});
-
-describe('getUnit', () => {
-  it('gets the current unit', () => {
-    expect(selectors.getUnit(exampleState)).toEqual(exampleState.comparePaper.ui.unit);
-  });
-
-  it("gets unit's empty state", () => {
-    expect(selectors.getUnit(emptyExample)).toEqual('m');
-  });
-});
 
 /* Form */
 describe('calculatePricePerUnitProductOne', () => {

@@ -1,11 +1,6 @@
 import { createSelector } from 'reselect';
 import { formValueSelector } from 'redux-form';
 
-const ui = state => state.comparePaper.ui;
-
-export const getUi = createSelector([ui], ui => ui);
-export const getUnit = createSelector([getUi], ui => ui.unit || 'm');
-
 export const formProductOne = formValueSelector('comparePaperProductOne');
 export const formProductTwo = formValueSelector('comparePaperProductTwo');
 
