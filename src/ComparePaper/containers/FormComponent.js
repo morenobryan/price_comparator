@@ -12,6 +12,8 @@ type Props = {
 
 export default class ComparePaper extends React.Component<Props> {
   render() {
+    const { disabledSubmit, navigation } = this.props;
+
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
@@ -21,14 +23,12 @@ export default class ComparePaper extends React.Component<Props> {
           <TouchableOpacity
             style={[
               styles.submitButton,
-              this.props.disabledSubmit ? styles.disabledSubmitButton : styles.enabledSubmitButton,
+              disabledSubmit ? styles.disabledSubmitButton : styles.enabledSubmitButton,
             ]}
-            onPress={() => this.props.navigation.navigate('ComparePaperResult')}
-            disabled={this.props.disabledSubmit}
+            onPress={() => navigation.navigate('ComparePaperResult')}
+            disabled={disabledSubmit}
           >
-            <Text
-              style={this.props.disabledSubmit ? styles.disabledSubmitLabel : styles.submitLabel}
-            >
+            <Text style={disabledSubmit ? styles.disabledSubmitLabel : styles.submitLabel}>
               COMPARAR
             </Text>
           </TouchableOpacity>

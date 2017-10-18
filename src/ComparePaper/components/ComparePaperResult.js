@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import ProductResult from './ProductResult';
-import BestProductResult from './BestProductResult';
+import ProductResult from '../../shared/components/ProductResult';
+import BestProductResult from '../../shared/components/BestProductResult';
 
 type Props = {
   navigation: {

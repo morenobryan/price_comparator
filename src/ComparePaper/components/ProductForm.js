@@ -3,8 +3,8 @@ import * as React from 'react';
 import { Field } from 'redux-form';
 import { StyleSheet, Text, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import ComparisonInput from './ComparisonInput';
-import UnitSwitcher from './UnitSwitcher';
+import ComparisonInputText from '../../shared/components/ComparisonInputText';
+import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect';
 
 type Props = {
   productName: string,
@@ -16,7 +16,6 @@ type Props = {
 export default class ComparePaper extends React.Component<Props> {
   rollAmount: ?any;
   rollWidth: ?any;
-  widthUnit: ?any;
   price: ?any;
 
   setRollAmountRef = (componentRef: any) => (this.rollAmount = componentRef);
@@ -37,7 +36,7 @@ export default class ComparePaper extends React.Component<Props> {
             keyboardType="numeric"
             returnKeyType="next"
             selectionColor="#0D47A1"
-            component={ComparisonInput}
+            component={ComparisonInputText}
             onEnter={() => {
               this.rollWidth && this.rollWidth.getRenderedComponent().refs.rollWidth.focus();
             }}
@@ -53,24 +52,13 @@ export default class ComparePaper extends React.Component<Props> {
             keyboardType="numeric"
             returnKeyType="next"
             selectionColor="#0D47A1"
-            component={ComparisonInput}
+            component={ComparisonInputText}
             onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Unidade</Text>
-          <View style={styles.unitContainer}>
-            <UnitSwitcher
-              name="m"
-              selected={this.props.unit === 'm'}
-              onPress={this.props.setMeterUnit}
-            />
-            <UnitSwitcher
-              name="cm"
-              selected={this.props.unit === 'cm'}
-              onPress={this.props.setCentimeterUnit}
-            />
-          </View>
+          <Field name="widthUnit" component={ComparisonInputSelect} options={['m', 'cm']} />
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Preço</Text>
@@ -82,7 +70,7 @@ export default class ComparePaper extends React.Component<Props> {
             keyboardType="numeric"
             returnKeyType="next"
             selectionColor="#0D47A1"
-            component={ComparisonInput}
+            component={ComparisonInputText}
             onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
         </View>
@@ -97,10 +85,6 @@ const styles = StyleSheet.create({
     flex: 0.5,
     alignSelf: 'stretch',
     backgroundColor: '#1E88E5',
-  },
-  unitContainer: {
-    flex: 0.6,
-    flexDirection: 'row',
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
