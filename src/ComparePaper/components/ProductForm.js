@@ -26,9 +26,6 @@ export default class ProductForm extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{this.props.productName}</Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Dashboard')}>
-          <Text>VOLTAR</Text>
-        </TouchableOpacity>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Qtde de Rolos</Text>
           <Field
@@ -60,10 +57,6 @@ export default class ProductForm extends React.Component<Props> {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Unidade</Text>
-          <Field name="widthUnit" component={ComparisonInputSelect} options={['m', 'cm']} />
-        </View>
-        <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Preço</Text>
           <Field
             ref={this.setPriceRef}
@@ -76,6 +69,10 @@ export default class ProductForm extends React.Component<Props> {
             component={ComparisonInputText}
             onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>Unidade</Text>
+          <Field name="widthUnit" component={ComparisonInputSelect} options={['m', 'cm']} />
         </View>
       </View>
     );
