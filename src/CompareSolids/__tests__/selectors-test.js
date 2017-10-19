@@ -2,7 +2,7 @@ import * as selectors from '../selectors';
 
 const exampleState = {
   form: {
-    compareLiquidsProductOne: {
+    compareSolidsProductOne: {
       values: {
         price: '3',
         quantity: '4',
@@ -10,7 +10,7 @@ const exampleState = {
         unit: 'L',
       },
     },
-    compareLiquidsProductTwo: {
+    compareSolidsProductTwo: {
       values: {
         price: '5',
         quantity: '6',
@@ -23,7 +23,7 @@ const exampleState = {
 
 const emptyExample = {
   form: {
-    compareLiquidsProductOne: {
+    compareSolidsProductOne: {
       values: {
         price: undefined,
         quantity: undefined,
@@ -31,7 +31,7 @@ const emptyExample = {
         unit: undefined,
       },
     },
-    compareLiquidsProductTwo: {
+    compareSolidsProductTwo: {
       values: {
         price: undefined,
         quantity: undefined,
@@ -46,9 +46,9 @@ const emptyExample = {
 describe('calculatePricePerUnitProductOne', () => {
   it('calculates the correct sum', () => {
     expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      exampleState.form.compareLiquidsProductOne.values.price /
-        exampleState.form.compareLiquidsProductOne.values.quantity *
-        exampleState.form.compareLiquidsProductOne.values.volume
+      exampleState.form.compareSolidsProductOne.values.price /
+        exampleState.form.compareSolidsProductOne.values.quantity *
+        exampleState.form.compareSolidsProductOne.values.volume
     );
   });
 });
@@ -56,9 +56,9 @@ describe('calculatePricePerUnitProductOne', () => {
 describe('calculatePricePerUnitProductTwo', () => {
   it('calculates the correct sum', () => {
     expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      exampleState.form.compareLiquidsProductTwo.values.price /
-        exampleState.form.compareLiquidsProductTwo.values.quantity *
-        exampleState.form.compareLiquidsProductTwo.values.volume
+      exampleState.form.compareSolidsProductTwo.values.price /
+        exampleState.form.compareSolidsProductTwo.values.quantity *
+        exampleState.form.compareSolidsProductTwo.values.volume
     );
   });
 });
@@ -66,14 +66,14 @@ describe('calculatePricePerUnitProductTwo', () => {
 describe('calculateEconomyPercentage', () => {
   it('calculates the correct sum', () => {
     const priceOne =
-      exampleState.form.compareLiquidsProductOne.values.price /
-      exampleState.form.compareLiquidsProductOne.values.quantity *
-      exampleState.form.compareLiquidsProductOne.values.volume;
+      exampleState.form.compareSolidsProductOne.values.price /
+      exampleState.form.compareSolidsProductOne.values.quantity *
+      exampleState.form.compareSolidsProductOne.values.volume;
 
     const priceTwo =
-      exampleState.form.compareLiquidsProductTwo.values.price /
-      exampleState.form.compareLiquidsProductTwo.values.quantity *
-      exampleState.form.compareLiquidsProductTwo.values.volume;
+      exampleState.form.compareSolidsProductTwo.values.price /
+      exampleState.form.compareSolidsProductTwo.values.quantity *
+      exampleState.form.compareSolidsProductTwo.values.volume;
 
     const worstPrice = Math.max(priceOne, priceTwo);
     const bestPrice = Math.min(priceOne, priceTwo);

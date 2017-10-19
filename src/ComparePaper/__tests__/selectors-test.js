@@ -75,7 +75,7 @@ describe('calculateEconomyPercentage', () => {
     const bestPrice = Math.min(priceOne, priceTwo);
 
     expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(
-      (worstPrice - bestPrice) / worstPrice * 100
+      (worstPrice - bestPrice) / worstPrice
     );
   });
 });

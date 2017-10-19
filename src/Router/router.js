@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import ComparePaper from '../ComparePaper/containers/Form';
-import ComparePaperResult from '../ComparePaper/containers/Result';
 import CompareLiquids from '../CompareLiquids/containers/Form';
 import CompareLiquidsResult from '../CompareLiquids/containers/Result';
+import CompareSolids from '../CompareSolids/containers/Form';
+import CompareSolidsResult from '../CompareSolids/containers/Result';
+import ComparePaper from '../ComparePaper/containers/Form';
+import ComparePaperResult from '../ComparePaper/containers/Result';
 import Dashboard from '../Dashboard/components/Dashboard.js';
 
 export const Root = StackNavigator(
@@ -28,6 +30,20 @@ export const Root = StackNavigator(
       navigationOptions: {
         header: null,
         title: 'Comparar Líquidos - Resultado',
+      },
+    },
+    CompareSolids: {
+      screen: CompareSolids,
+      navigationOptions: {
+        header: null,
+        title: 'Comparar Sólidos',
+      },
+    },
+    CompareSolidsResult: {
+      screen: CompareSolidsResult,
+      navigationOptions: {
+        header: null,
+        title: 'Comparar Sólidos - Resultado',
       },
     },
     ComparePaper: {
