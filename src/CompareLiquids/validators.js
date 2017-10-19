@@ -1,6 +1,6 @@
 import { validateRequiredAndNumber } from '../shared/validators';
 
-export const validateComparePaperForm = values => {
-  const fieldsToValidate = ['rollAmount', 'rollWidth', 'price'];
+export const validateCompareLiquidsForm = values => {
+  const fieldsToValidate = ['quantity', 'volume', 'price'];
   return validateRequiredAndNumber(fieldsToValidate, values);
 };

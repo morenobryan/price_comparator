@@ -12,14 +12,16 @@ type Props = {
   economyPercentage: number,
   productOneResult: number,
   productTwoResult: number,
+  backPage: string,
 };
 
-const ComparePaperResult = ({
+const Result = ({
   navigation,
   bestProduct,
   productOneResult,
   productTwoResult,
   economyPercentage,
+  backPage,
 }: Props) => {
   return (
     <View style={styles.container}>
@@ -43,7 +45,7 @@ const ComparePaperResult = ({
       )}
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ComparePaper')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(backPage)}>
           <Text style={styles.buttonText}>EDITAR</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Dashboard')}>
@@ -54,7 +56,7 @@ const ComparePaperResult = ({
   );
 };
 
-export default ComparePaperResult;
+export default Result;
 
 const styles = StyleSheet.create({
   container: {

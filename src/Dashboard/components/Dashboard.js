@@ -26,7 +26,7 @@ export default ({ navigation }: Props) => (
         navigation={navigation}
         icon={drink}
         text="LÍQUIDOS"
-        pageName="ComparePaper"
+        pageName="CompareLiquids"
       />
       <NavButton
         backgroundColor="#1A237E"
@@ -35,7 +35,7 @@ export default ({ navigation }: Props) => (
         navigation={navigation}
         icon={bagIcon}
         text="SÓLIDOS"
-        pageName="ComparePaper"
+        pageName="CompareSolids"
       />
       <NavButton
         backgroundColor="#1A237E"

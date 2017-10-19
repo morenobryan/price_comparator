@@ -1,4 +1,4 @@
-// @flow
+// @flowsetRollWidthRef
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
@@ -9,13 +9,14 @@ import {
   calculatePricePerUnitProductTwo,
 } from '../selectors';
 
-import ComparePaperResult from '../components/ComparePaperResult';
+import ResultPage from '../../shared/components/ResultPage';
 
 const mapStateToProps = state => ({
   bestProduct: calculateBestProduct(state),
   economyPercentage: calculateEconomyPercentage(state),
   productOneResult: calculatePricePerUnitProductOne(state),
   productTwoResult: calculatePricePerUnitProductTwo(state),
+  backPage: 'CompareLiquids',
 });
 
-export default connect(mapStateToProps)(ComparePaperResult);
+export default connect(mapStateToProps)(ResultPage);

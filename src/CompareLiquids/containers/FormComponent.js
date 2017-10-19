@@ -18,12 +18,15 @@ export default class FormComponent extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
+          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+            <Text>VOLTAR</Text>
+          </TouchableOpacity>
           <ProductOne navigation={navigation} />
           <ProductTwo navigation={navigation} />
           <CompareButton
             disabled={disabledSubmit}
             navigation={navigation}
-            nextPage="ComparePaperResult"
+            nextPage="CompareLiquidsResult"
             label="COMPARAR"
           />
         </KeyboardAwareScrollView>

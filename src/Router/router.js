@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import ComparePaper from '../ComparePaper/containers/Form';
-import ComparePaperResult from '../ComparePaper/containers/ComparePaperResult';
+import ComparePaperResult from '../ComparePaper/containers/Result';
+import CompareLiquids from '../CompareLiquids/containers/Form';
+import CompareLiquidsResult from '../CompareLiquids/containers/Result';
 import Dashboard from '../Dashboard/components/Dashboard.js';
 
 export const Root = StackNavigator(
@@ -12,6 +14,20 @@ export const Root = StackNavigator(
       navigationOptions: {
         header: null,
         title: 'Tela Inicial',
+      },
+    },
+    CompareLiquids: {
+      screen: CompareLiquids,
+      navigationOptions: {
+        header: null,
+        title: 'Comparar Líquidos',
+      },
+    },
+    CompareLiquidsResult: {
+      screen: CompareLiquidsResult,
+      navigationOptions: {
+        header: null,
+        title: 'Comparar Líquidos - Resultado',
       },
     },
     ComparePaper: {

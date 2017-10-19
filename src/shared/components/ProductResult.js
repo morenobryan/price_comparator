@@ -8,7 +8,7 @@ type Props = {
   result: number,
 };
 
-const ComparePaperResult = ({ name, result }: Props) => {
+const Result = ({ name, result }: Props) => {
   return (
     <View style={styles.subContainer}>
       <Text style={styles.title}>{name}</Text>
@@ -20,7 +20,7 @@ const ComparePaperResult = ({ name, result }: Props) => {
   );
 };
 
-export default ComparePaperResult;
+export default Result;
 
 const styles = StyleSheet.create({
   subContainer: {

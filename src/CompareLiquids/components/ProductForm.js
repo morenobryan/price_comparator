@@ -8,31 +8,26 @@ import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect
 
 type Props = {
   productName: string,
-  navigation: {
-    navigate: string => void,
-  },
 };
 
 export default class ProductForm extends React.Component<Props> {
   quantity: ?any;
-  rollWidth: ?any;
+  volume: ?any;
   price: ?any;
 
-  setQuantityRef = (componentRef: any) => (this.quantity = componentRef);
-  setRollWidthRef = (componentRef: any) => (this.rollWidth = componentRef);
-  setPriceRef = (componentRef: any) => (this.price = componentRef);
+  quantityRef = (componentRef: any) => (this.quantity = componentRef);
+  volumeRef = (componentRef: any) => (this.volume = componentRef);
+  priceRef = (componentRef: any) => (this.price = componentRef);
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{this.props.productName}</Text>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Dashboard')}>
-          <Text>VOLTAR</Text>
-        </TouchableOpacity>
+
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Qtde de Rolos</Text>
+          <Text style={styles.inputLabel}>Número de Itens</Text>
           <Field
-            ref={this.setQuantityRef}
+            ref={this.quantityRef}
             refField="quantity"
             withRef
             name="quantity"
@@ -41,17 +36,17 @@ export default class ProductForm extends React.Component<Props> {
             selectionColor="#0D47A1"
             component={ComparisonInputText}
             onEnter={() => {
-              this.rollWidth && this.rollWidth.getRenderedComponent().refs.rollWidth.focus();
+              this.volume && this.volume.getRenderedComponent().refs.volume.focus();
             }}
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Comprimento</Text>
+          <Text style={styles.inputLabel}>Volume do Item</Text>
           <Field
-            ref={this.setRollWidthRef}
-            refField="rollWidth"
+            ref={this.volumeRef}
+            refField="volume"
             withRef
-            name="rollWidth"
+            name="volume"
             keyboardType="numeric"
             returnKeyType="next"
             selectionColor="#0D47A1"
@@ -60,13 +55,9 @@ export default class ProductForm extends React.Component<Props> {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Unidade</Text>
-          <Field name="widthUnit" component={ComparisonInputSelect} options={['m', 'cm']} />
-        </View>
-        <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Preço</Text>
           <Field
-            ref={this.setPriceRef}
+            ref={this.priceRef}
             refField="price"
             withRef
             name="price"
@@ -74,8 +65,11 @@ export default class ProductForm extends React.Component<Props> {
             returnKeyType="next"
             selectionColor="#0D47A1"
             component={ComparisonInputText}
-            onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputLabel}>Unidade</Text>
+          <Field name="unit" component={ComparisonInputSelect} options={['L', 'mL']} />
         </View>
       </View>
     );
