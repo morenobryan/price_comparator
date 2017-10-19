@@ -46,10 +46,7 @@ const ComparePaperResult = ({
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ComparePaper')}>
           <Text style={styles.buttonText}>EDITAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('ComparePaperResult')}
-        >
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Dashboard')}>
           <Text style={styles.buttonText}>NOVA COMPARAÇÃO</Text>
         </TouchableOpacity>
       </View>
