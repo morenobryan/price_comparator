@@ -1,6 +1,6 @@
 // @flowsetRollWidthRef
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { reset } from 'redux-form';
 
 import {
   calculateBestProduct,
@@ -19,4 +19,11 @@ const mapStateToProps = state => ({
   backPage: 'CompareLiquids',
 });
 
-export default connect(mapStateToProps)(ResultPage);
+const mapDispatchToProps = dispatch => ({
+  reset: () => {
+    dispatch(reset('compareLiquidsProductOne'));
+    dispatch(reset('compareLiquidsProductTwo'));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResultPage);

@@ -13,6 +13,7 @@ type Props = {
   productOneResult: number,
   productTwoResult: number,
   backPage: string,
+  reset: () => void,
 };
 
 const Result = ({
@@ -22,6 +23,7 @@ const Result = ({
   productTwoResult,
   economyPercentage,
   backPage,
+  reset,
 }: Props) => {
   return (
     <View style={styles.container}>
@@ -48,7 +50,13 @@ const Result = ({
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(backPage)}>
           <Text style={styles.buttonText}>EDITAR</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Dashboard')}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('Dashboard');
+            reset();
+          }}
+        >
           <Text style={styles.buttonText}>NOVA COMPARAÇÃO</Text>
         </TouchableOpacity>
       </View>

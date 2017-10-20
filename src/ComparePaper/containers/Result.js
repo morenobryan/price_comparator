@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { reset } from 'redux-form';
 
 import {
   calculateBestProduct,
@@ -19,4 +19,11 @@ const mapStateToProps = state => ({
   backPage: 'ComparePaper',
 });
 
-export default connect(mapStateToProps)(ResultPage);
+const mapDispatchToProps = dispatch => ({
+  reset: () => {
+    dispatch(reset('comparePaperProductTwo'));
+    dispatch(reset('comparePaperProductOne'));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResultPage);
