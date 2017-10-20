@@ -14,57 +14,57 @@ export const Root = StackNavigator(
     Dashboard: {
       screen: Dashboard,
       navigationOptions: {
-        header: null,
         title: 'Tela Inicial',
+        header: null,
       },
     },
     CompareLiquids: {
       screen: CompareLiquids,
       navigationOptions: {
-        header: null,
         title: 'Comparar Líquidos',
+        header: null,
       },
     },
     CompareLiquidsResult: {
       screen: CompareLiquidsResult,
       navigationOptions: {
-        header: null,
         title: 'Comparar Líquidos - Resultado',
+        header: null,
       },
     },
     CompareSolids: {
       screen: CompareSolids,
       navigationOptions: {
-        header: null,
         title: 'Comparar Sólidos',
+        header: null,
       },
     },
     CompareSolidsResult: {
       screen: CompareSolidsResult,
       navigationOptions: {
-        header: null,
         title: 'Comparar Sólidos - Resultado',
+        header: null,
       },
     },
     ComparePaper: {
       screen: ComparePaper,
       navigationOptions: {
-        header: null,
         title: 'Comparar Papel',
+        header: null,
       },
     },
     ComparePaperResult: {
       screen: ComparePaperResult,
       navigationOptions: {
-        header: null,
         title: 'Comparar Papel - Resultado',
+        header: null,
       },
     },
   },
   {
     headerMode: 'screen',
-    cardStyle: {
-      paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-    },
+    // cardStyle: {
+    //   paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
+    // },
   }
 );

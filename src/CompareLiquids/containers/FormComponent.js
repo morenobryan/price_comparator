@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ProductOne from './ProductOne';
 import ProductTwo from './ProductTwo';
@@ -39,5 +39,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#1E88E5',
     flex: 1,
+    paddingTop: StatusBar.currentHeight,
   },
 });

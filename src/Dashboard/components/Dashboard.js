@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import NavButton from './NavButton';
 
 const bagIcon = '\uf100';
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#3949AB',
-    paddingTop: 50,
+    paddingTop: 50 + StatusBar.currentHeight,
     paddingBottom: 30,
   },
   title: {

@@ -45,36 +45,38 @@ const emptyExample = {
 /* Form */
 describe('calculatePricePerUnitProductOne', () => {
   it('calculates the correct sum', () => {
+    const formOne = exampleState.form.compareLiquidsProductOne.values;
+
     expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      exampleState.form.compareLiquidsProductOne.values.price /
-        exampleState.form.compareLiquidsProductOne.values.quantity *
-        exampleState.form.compareLiquidsProductOne.values.volume
+      formOne.price / (formOne.quantity * formOne.volume * 1)
     );
   });
 });
 
 describe('calculatePricePerUnitProductTwo', () => {
   it('calculates the correct sum', () => {
+    const formTwo = exampleState.form.compareLiquidsProductTwo.values;
+
     expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      exampleState.form.compareLiquidsProductTwo.values.price /
-        exampleState.form.compareLiquidsProductTwo.values.quantity *
-        exampleState.form.compareLiquidsProductTwo.values.volume
+      formTwo.price / (formTwo.quantity * formTwo.volume * 1000)
+    );
+  });
+});
+
+describe('calculateBestProduct', () => {
+  it('calculates the best product', () => {
+    expect(selectors.calculateBestProduct(exampleState)).toEqual(
+      selectors.calculatePricePerUnitProductTwo(exampleState)
     );
   });
 });
 
 describe('calculateEconomyPercentage', () => {
   it('calculates the correct sum', () => {
-    const priceOne =
-      exampleState.form.compareLiquidsProductOne.values.price /
-      exampleState.form.compareLiquidsProductOne.values.quantity *
-      exampleState.form.compareLiquidsProductOne.values.volume;
-
-    const priceTwo =
-      exampleState.form.compareLiquidsProductTwo.values.price /
-      exampleState.form.compareLiquidsProductTwo.values.quantity *
-      exampleState.form.compareLiquidsProductTwo.values.volume;
-
+    const formOne = exampleState.form.compareLiquidsProductOne.values;
+    const formTwo = exampleState.form.compareLiquidsProductTwo.values;
+    const priceOne = formOne.price / (formOne.quantity * formOne.volume * 1);
+    const priceTwo = formTwo.price / (formTwo.quantity * formTwo.volume * 1000);
     const worstPrice = Math.max(priceOne, priceTwo);
     const bestPrice = Math.min(priceOne, priceTwo);
 

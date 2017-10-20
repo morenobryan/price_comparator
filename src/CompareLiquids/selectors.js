@@ -9,7 +9,7 @@ export const calculatePricePerUnitProductOne = state => {
   const volume = formProductOne(state, 'volume');
   const price = formProductOne(state, 'price');
   const unit = formProductOne(state, 'unit');
-  const multiplier = unit === 'L' ? 1 : 100;
+  const multiplier = unit === 'L' ? 1 : 1000;
 
   return price / (quantity * volume * multiplier);
 };
@@ -19,7 +19,7 @@ export const calculatePricePerUnitProductTwo = state => {
   const volume = formProductTwo(state, 'volume');
   const price = formProductTwo(state, 'price');
   const unit = formProductTwo(state, 'unit');
-  const multiplier = unit === 'L' ? 1 : 100;
+  const multiplier = unit === 'L' ? 1 : 1000;
 
   return price / (quantity * volume * multiplier);
 };

@@ -5,15 +5,17 @@ const exampleState = {
     comparePaperProductOne: {
       values: {
         price: '3',
-        rollAmount: '4',
+        quantity: '4',
         rollWidth: '5',
+        widthUnit: 'm',
       },
     },
     comparePaperProductTwo: {
       values: {
         price: '5',
-        rollAmount: '6',
+        quantity: '6',
         rollWidth: '7',
+        widthUnit: 'cm',
       },
     },
   },
@@ -24,15 +26,17 @@ const emptyExample = {
     comparePaperProductOne: {
       values: {
         price: undefined,
-        rollAmount: undefined,
+        quantity: undefined,
         rollWidth: undefined,
+        widthUnit: undefined,
       },
     },
     comparePaperProductTwo: {
       values: {
         price: undefined,
-        rollAmount: undefined,
+        quantity: undefined,
         rollWidth: undefined,
+        widthUnit: undefined,
       },
     },
   },
@@ -41,36 +45,38 @@ const emptyExample = {
 /* Form */
 describe('calculatePricePerUnitProductOne', () => {
   it('calculates the correct sum', () => {
+    const formOne = exampleState.form.comparePaperProductOne.values;
+
     expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      exampleState.form.comparePaperProductOne.values.price /
-        exampleState.form.comparePaperProductOne.values.rollAmount *
-        exampleState.form.comparePaperProductOne.values.rollWidth
+      formOne.price / (formOne.quantity * formOne.rollWidth * 1)
     );
   });
 });
 
 describe('calculatePricePerUnitProductTwo', () => {
   it('calculates the correct sum', () => {
+    const formTwo = exampleState.form.comparePaperProductTwo.values;
+
     expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      exampleState.form.comparePaperProductTwo.values.price /
-        exampleState.form.comparePaperProductTwo.values.rollAmount *
-        exampleState.form.comparePaperProductTwo.values.rollWidth
+      formTwo.price / (formTwo.quantity * formTwo.rollWidth * 100)
+    );
+  });
+});
+
+describe('calculateBestProduct', () => {
+  it('calculates the best product', () => {
+    expect(selectors.calculateBestProduct(exampleState)).toEqual(
+      selectors.calculatePricePerUnitProductTwo(exampleState)
     );
   });
 });
 
 describe('calculateEconomyPercentage', () => {
   it('calculates the correct sum', () => {
-    const priceOne =
-      exampleState.form.comparePaperProductOne.values.price /
-      exampleState.form.comparePaperProductOne.values.rollAmount *
-      exampleState.form.comparePaperProductOne.values.rollWidth;
-
-    const priceTwo =
-      exampleState.form.comparePaperProductTwo.values.price /
-      exampleState.form.comparePaperProductTwo.values.rollAmount *
-      exampleState.form.comparePaperProductTwo.values.rollWidth;
-
+    const formOne = exampleState.form.comparePaperProductOne.values;
+    const formTwo = exampleState.form.comparePaperProductTwo.values;
+    const priceOne = formOne.price / (formOne.quantity * formOne.rollWidth * 1);
+    const priceTwo = formTwo.price / (formTwo.quantity * formTwo.rollWidth * 100);
     const worstPrice = Math.max(priceOne, priceTwo);
     const bestPrice = Math.min(priceOne, priceTwo);
 
