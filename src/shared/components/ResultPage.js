@@ -7,6 +7,7 @@ import BestProductResult from '../../shared/components/BestProductResult';
 type Props = {
   navigation: {
     navigate: string => void,
+    goBack: (?string) => void,
   },
   bestProduct: number,
   economyPercentage: number,
@@ -47,7 +48,7 @@ const Result = ({
       )}
 
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(backPage)}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.goBack()}>
           <Text style={styles.buttonText}>EDITAR</Text>
         </TouchableOpacity>
         <TouchableOpacity

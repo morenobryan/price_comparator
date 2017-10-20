@@ -8,7 +8,7 @@ import CompareButton from '../../shared/components/CompareButton';
 
 type Props = {
   disabledSubmit: boolean,
-  navigation: { navigate: string => void },
+  navigation: { navigate: string => void, goBack: (?string) => void },
 };
 
 export default class FormComponent extends React.Component<Props> {
@@ -18,7 +18,7 @@ export default class FormComponent extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
-          <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text>VOLTAR</Text>
           </TouchableOpacity>
           <ProductOne navigation={navigation} />
