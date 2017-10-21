@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
   productOneResult: calculatePricePerUnitProductOne(state),
   productTwoResult: calculatePricePerUnitProductTwo(state),
   backPage: 'CompareSolids',
+  baseUnit: 'grama',
 });
 
 const mapDispatchToProps = dispatch => ({

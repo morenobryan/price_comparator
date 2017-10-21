@@ -6,16 +6,17 @@ import { FormattedCurrency, FormattedNumber } from 'react-native-globalize';
 type Props = {
   name: string,
   result: number,
+  baseUnit: string,
   economyPercentage: number,
 };
 
-const BestProductResult = ({ name, result, economyPercentage }: Props) => {
+const BestProductResult = ({ name, result, baseUnit, economyPercentage }: Props) => {
   return (
     <View style={styles.subContainer}>
       <Text style={styles.title}>{name}</Text>
       <View style={styles.textContainer}>
         <FormattedCurrency value={result} maximumFractionDigits={4} style={styles.bigText} />
-        <Text style={styles.text}>é o custo deste produto por metro</Text>
+        <Text style={styles.text}>é o custo deste produto por {baseUnit}</Text>
       </View>
       <View>
         <FormattedNumber value={economyPercentage} numberStyle="percent" style={styles.bigText} />

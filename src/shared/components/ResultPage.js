@@ -14,6 +14,7 @@ type Props = {
   productOneResult: number,
   productTwoResult: number,
   backPage: string,
+  baseUnit: string,
   reset: () => void,
 };
 
@@ -24,24 +25,27 @@ const ResultPage = ({
   productTwoResult,
   economyPercentage,
   backPage,
+  baseUnit,
   reset,
 }: Props) => {
   return (
     <View style={styles.container}>
       {worstProduct === productOneResult ? (
-        <ProductResult name="PRODUTO 1" result={productOneResult} />
+        <ProductResult name="PRODUTO 1" baseUnit={baseUnit} result={productOneResult} />
       ) : (
         <BestProductResult
           name="PRODUTO 1"
+          baseUnit={baseUnit}
           result={productOneResult}
           economyPercentage={economyPercentage}
         />
       )}
       {worstProduct === productTwoResult ? (
-        <ProductResult name="PRODUTO 2" result={productTwoResult} />
+        <ProductResult name="PRODUTO 2" baseUnit={baseUnit} result={productTwoResult} />
       ) : (
         <BestProductResult
           name="PRODUTO 2"
+          baseUnit={baseUnit}
           result={productTwoResult}
           economyPercentage={economyPercentage}
         />
