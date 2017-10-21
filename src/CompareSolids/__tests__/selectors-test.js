@@ -63,10 +63,10 @@ describe('calculatePricePerUnitProductTwo', () => {
   });
 });
 
-describe('calculateBestProduct', () => {
-  it('calculates the best product', () => {
-    expect(selectors.calculateBestProduct(exampleState)).toEqual(
-      selectors.calculatePricePerUnitProductTwo(exampleState)
+describe('calculateWorstProduct', () => {
+  it('calculates the worst product', () => {
+    expect(selectors.calculateWorstProduct(exampleState)).toEqual(
+      selectors.calculatePricePerUnitProductOne(exampleState)
     );
   });
 });

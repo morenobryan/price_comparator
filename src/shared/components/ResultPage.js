@@ -9,7 +9,7 @@ type Props = {
     navigate: string => void,
     goBack: (?string) => void,
   },
-  bestProduct: number,
+  worstProduct: number,
   economyPercentage: number,
   productOneResult: number,
   productTwoResult: number,
@@ -17,9 +17,9 @@ type Props = {
   reset: () => void,
 };
 
-const Result = ({
+const ResultPage = ({
   navigation,
-  bestProduct,
+  worstProduct,
   productOneResult,
   productTwoResult,
   economyPercentage,
@@ -28,23 +28,26 @@ const Result = ({
 }: Props) => {
   return (
     <View style={styles.container}>
-      {bestProduct === productOneResult ? (
+      {worstProduct === productOneResult ? (
+        <ProductResult name="PRODUTO 1" result={productOneResult} />
+      ) : (
         <BestProductResult
           name="PRODUTO 1"
           result={productOneResult}
           economyPercentage={economyPercentage}
         />
-      ) : (
-        <ProductResult name="PRODUTO 1" result={productOneResult} />
       )}
-      {bestProduct === productTwoResult ? (
+      {worstProduct === productTwoResult ? (
+        <ProductResult name="PRODUTO 2" result={productTwoResult} />
+      ) : (
         <BestProductResult
           name="PRODUTO 2"
           result={productTwoResult}
           economyPercentage={economyPercentage}
         />
-      ) : (
-        <ProductResult name="PRODUTO 2" result={productTwoResult} />
+      )}
+      {productOneResult === productTwoResult && (
+        <Text>Estes produtos são equivalentes #chupaBubs</Text>
       )}
 
       <View style={styles.buttonsContainer}>
@@ -65,7 +68,7 @@ const Result = ({
   );
 };
 
-export default Result;
+export default ResultPage;
 
 const styles = StyleSheet.create({
   container: {

@@ -63,8 +63,5 @@ export const Root = StackNavigator(
   },
   {
     headerMode: 'screen',
-    // cardStyle: {
-    //   paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-    // },
   }
 );

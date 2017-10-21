@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reset } from 'redux-form';
 
 import {
-  calculateBestProduct,
+  calculateWorstProduct,
   calculateEconomyPercentage,
   calculatePricePerUnitProductOne,
   calculatePricePerUnitProductTwo,
@@ -12,7 +12,7 @@ import {
 import ResultPage from '../../shared/components/ResultPage';
 
 const mapStateToProps = state => ({
-  bestProduct: calculateBestProduct(state),
+  worstProduct: calculateWorstProduct(state),
   economyPercentage: calculateEconomyPercentage(state),
   productOneResult: calculatePricePerUnitProductOne(state),
   productTwoResult: calculatePricePerUnitProductTwo(state),

@@ -24,9 +24,9 @@ export const calculatePricePerUnitProductTwo = state => {
   return price / (quantity * volume * multiplier);
 };
 
-export const calculateBestProduct = createSelector(
+export const calculateWorstProduct = createSelector(
   [calculatePricePerUnitProductOne, calculatePricePerUnitProductTwo],
-  (priceOne, priceTwo) => Math.min(priceOne, priceTwo)
+  (priceOne, priceTwo) => Math.max(priceOne, priceTwo)
 );
 
 export const calculateEconomyPercentage = createSelector(

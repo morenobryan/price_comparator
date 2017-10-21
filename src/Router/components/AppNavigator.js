@@ -4,7 +4,12 @@ import { BackHandler } from 'react-native';
 import { addNavigationHelpers, NavigationActions } from 'react-navigation';
 import { Root } from '../router';
 
-export default class AppNavigator extends React.Component {
+type Props = {
+  dispatch: any => any,
+  nav: { index: number },
+};
+
+export default class AppNavigator extends React.Component<Props> {
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
   }
