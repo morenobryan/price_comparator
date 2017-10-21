@@ -8,20 +8,20 @@ export const calculatePricePerUnitProductOne = state => {
   const quantity = formProductOne(state, 'quantity');
   const volume = formProductOne(state, 'volume');
   const price = formProductOne(state, 'price');
-  const unit = formProductOne(state, 'unit');
+  const unit = formProductOne(state, 'unit') || 'L';
   const multiplier = unit === 'L' ? 1 : 1000;
 
-  return price / (quantity * volume * multiplier);
+  return quantity * volume * multiplier / price;
 };
 
 export const calculatePricePerUnitProductTwo = state => {
   const quantity = formProductTwo(state, 'quantity');
   const volume = formProductTwo(state, 'volume');
   const price = formProductTwo(state, 'price');
-  const unit = formProductTwo(state, 'unit');
+  const unit = formProductTwo(state, 'unit') || 'L';
   const multiplier = unit === 'L' ? 1 : 1000;
 
-  return price / (quantity * volume * multiplier);
+  return quantity * volume * multiplier / price;
 };
 
 export const calculateWorstProduct = createSelector(

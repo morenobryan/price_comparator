@@ -9,9 +9,9 @@ export const calculatePricePerUnitProductOne = state => {
   const mass = formProductOne(state, 'mass');
   const price = formProductOne(state, 'price');
   const unit = formProductOne(state, 'unit');
-  const multiplier = unit === 'g' ? 1 : 1000;
+  const multiplier = unit === 'kg' ? 1 : 1000;
 
-  return price / (quantity * mass * multiplier);
+  return quantity * mass * multiplier / price;
 };
 
 export const calculatePricePerUnitProductTwo = state => {
@@ -19,9 +19,9 @@ export const calculatePricePerUnitProductTwo = state => {
   const mass = formProductTwo(state, 'mass');
   const price = formProductTwo(state, 'price');
   const unit = formProductTwo(state, 'unit');
-  const multiplier = unit === 'g' ? 1 : 1000;
+  const multiplier = unit === 'kg' ? 1 : 1000;
 
-  return price / (quantity * mass * multiplier);
+  return quantity * mass * multiplier / price;
 };
 
 export const calculateWorstProduct = createSelector(

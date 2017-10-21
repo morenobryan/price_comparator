@@ -6,7 +6,7 @@ const exampleState = {
       values: {
         price: '3',
         quantity: '4',
-        rollWidth: '5',
+        volume: '5',
         widthUnit: 'm',
       },
     },
@@ -14,7 +14,7 @@ const exampleState = {
       values: {
         price: '5',
         quantity: '6',
-        rollWidth: '7',
+        volume: '7',
         widthUnit: 'cm',
       },
     },
@@ -48,7 +48,7 @@ describe('calculatePricePerUnitProductOne', () => {
     const formOne = exampleState.form.comparePaperProductOne.values;
 
     expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      formOne.price / (formOne.quantity * formOne.rollWidth * 1)
+      formOne.quantity * formOne.rollWidth * 1 / formOne.price
     );
   });
 });
@@ -58,7 +58,7 @@ describe('calculatePricePerUnitProductTwo', () => {
     const formTwo = exampleState.form.comparePaperProductTwo.values;
 
     expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      formTwo.price / (formTwo.quantity * formTwo.rollWidth * 100)
+      formTwo.quantity * formTwo.rollWidth * 100 / formTwo.price
     );
   });
 });
@@ -66,17 +66,17 @@ describe('calculatePricePerUnitProductTwo', () => {
 describe('calculateWorstProduct', () => {
   it('calculates the worst product', () => {
     expect(selectors.calculateWorstProduct(exampleState)).toEqual(
-      selectors.calculatePricePerUnitProductOne(exampleState)
+      selectors.calculatePricePerUnitProductTwo(exampleState)
     );
   });
 });
 
 describe('calculateEconomyPercentage', () => {
-  it('calculates the correct sum', () => {
+  it('calculates the economy percentage', () => {
     const formOne = exampleState.form.comparePaperProductOne.values;
     const formTwo = exampleState.form.comparePaperProductTwo.values;
-    const priceOne = formOne.price / (formOne.quantity * formOne.rollWidth * 1);
-    const priceTwo = formTwo.price / (formTwo.quantity * formTwo.rollWidth * 100);
+    const priceOne = formOne.quantity * formOne.rollWidth * 1 / formOne.price;
+    const priceTwo = formTwo.quantity * formTwo.rollWidth * 100 / formOne.price;
     const worstPrice = Math.max(priceOne, priceTwo);
     const bestPrice = Math.min(priceOne, priceTwo);
 

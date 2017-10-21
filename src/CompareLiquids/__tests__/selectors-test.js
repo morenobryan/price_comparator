@@ -48,7 +48,7 @@ describe('calculatePricePerUnitProductOne', () => {
     const formOne = exampleState.form.compareLiquidsProductOne.values;
 
     expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      formOne.price / (formOne.quantity * formOne.volume * 1)
+      formOne.quantity * formOne.volume * 1 / formOne.price
     );
   });
 });
@@ -58,7 +58,7 @@ describe('calculatePricePerUnitProductTwo', () => {
     const formTwo = exampleState.form.compareLiquidsProductTwo.values;
 
     expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      formTwo.price / (formTwo.quantity * formTwo.volume * 1000)
+      formTwo.quantity * formTwo.volume * 1000 / formTwo.price
     );
   });
 });
@@ -66,7 +66,7 @@ describe('calculatePricePerUnitProductTwo', () => {
 describe('calculateWorstProduct', () => {
   it('calculates the worst product', () => {
     expect(selectors.calculateWorstProduct(exampleState)).toEqual(
-      selectors.calculatePricePerUnitProductOne(exampleState)
+      selectors.calculatePricePerUnitProductTwo(exampleState)
     );
   });
 });
@@ -75,8 +75,8 @@ describe('calculateEconomyPercentage', () => {
   it('calculates the correct sum', () => {
     const formOne = exampleState.form.compareLiquidsProductOne.values;
     const formTwo = exampleState.form.compareLiquidsProductTwo.values;
-    const priceOne = formOne.price / (formOne.quantity * formOne.volume * 1);
-    const priceTwo = formTwo.price / (formTwo.quantity * formTwo.volume * 1000);
+    const priceOne = formOne.quantity * formOne.volume * 1 / formOne.price;
+    const priceTwo = formTwo.quantity * formTwo.volume * 1000 / formTwo.price;
     const worstPrice = Math.max(priceOne, priceTwo);
     const bestPrice = Math.min(priceOne, priceTwo);
 

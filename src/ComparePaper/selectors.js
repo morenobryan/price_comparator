@@ -11,7 +11,7 @@ export const calculatePricePerUnitProductOne = state => {
   const unit = formProductOne(state, 'widthUnit');
   const multiplier = unit === 'm' ? 1 : 100;
 
-  return price / (quantity * rollWidth * multiplier);
+  return quantity * rollWidth * multiplier / price;
 };
 
 export const calculatePricePerUnitProductTwo = state => {
@@ -21,7 +21,7 @@ export const calculatePricePerUnitProductTwo = state => {
   const unit = formProductTwo(state, 'widthUnit');
   const multiplier = unit === 'm' ? 1 : 100;
 
-  return price / (quantity * rollWidth * multiplier);
+  return quantity * rollWidth * multiplier / price;
 };
 
 export const calculateWorstProduct = createSelector(
