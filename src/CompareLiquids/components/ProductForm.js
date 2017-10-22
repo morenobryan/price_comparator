@@ -1,13 +1,14 @@
 // @flow
 import * as React from 'react';
 import { Field } from 'redux-form';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Picker } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInputText from '../../shared/components/ComparisonInputText';
 import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect';
 
 type Props = {
   productName: string,
+  unit: string,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -69,7 +70,12 @@ export default class ProductForm extends React.Component<Props> {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Unidade</Text>
-          <Field name="unit" component={ComparisonInputSelect} options={['L', 'mL']} />
+          <Field
+            name="unit"
+            component={ComparisonInputSelect}
+            selectedOption={this.props.unit}
+            options={['L', 'mL']}
+          />
         </View>
       </View>
     );

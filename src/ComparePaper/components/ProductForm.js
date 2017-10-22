@@ -8,9 +8,7 @@ import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect
 
 type Props = {
   productName: string,
-  navigation: {
-    navigate: string => void,
-  },
+  unit: string,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -72,7 +70,12 @@ export default class ProductForm extends React.Component<Props> {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Unidade</Text>
-          <Field name="widthUnit" component={ComparisonInputSelect} options={['m', 'cm']} />
+          <Field
+            name="widthUnit"
+            component={ComparisonInputSelect}
+            selectedOption={this.props.unit}
+            options={['m', 'cm']}
+          />
         </View>
       </View>
     );
