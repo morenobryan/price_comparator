@@ -1,5 +1,16 @@
 {
   "expo": {
+    "name": "TCC App",
+    "slug": "tcc-app",
+    "primaryColor": "#3949AB",
+    "icon":
+      "http://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/512/MetroUI-Folder-OS-OS-Android-icon.png",
+    "loading": {
+      "icon":
+        "http://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/512/MetroUI-Folder-OS-OS-Android-icon.png",
+      "backgroundColor": "#3949AB",
+      "hideExponentText": true
+    },
     "sdkVersion": "20.0.0"
   }
 }
