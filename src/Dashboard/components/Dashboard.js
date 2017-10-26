@@ -1,7 +1,16 @@
 // @flow
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { LinearGradient } from 'expo';
 import NavButton from './NavButton';
+import {
+  beigeGradient,
+  yellow,
+  orange,
+  red,
+  textColor,
+  secondaryTextColor,
+} from '../../shared/styles';
 
 const bagIcon = '\uf100';
 const toiletPaper1 = '\uf101';
@@ -16,44 +25,43 @@ type Props = {
 };
 
 export default ({ navigation }: Props) => (
-  <View style={styles.container}>
+  <LinearGradient colors={beigeGradient} style={styles.container}>
     <Text style={styles.title}>Escolha a categoria</Text>
     <View style={styles.buttonContainer}>
       <NavButton
-        backgroundColor="#1A237E"
-        color="#C5CAE9"
-        iconColor="#C5CAE9"
+        backgroundColor={yellow}
+        color={secondaryTextColor}
+        iconColor={secondaryTextColor}
         navigation={navigation}
         icon={drink}
         text="LÍQUIDOS"
         pageName="CompareLiquids"
       />
       <NavButton
-        backgroundColor="#1A237E"
-        color="#C5CAE9"
-        iconColor="#C5CAE9"
+        backgroundColor={orange}
+        color={secondaryTextColor}
+        iconColor={secondaryTextColor}
         navigation={navigation}
         icon={bagIcon}
         text="SÓLIDOS"
         pageName="CompareSolids"
       />
       <NavButton
-        backgroundColor="#1A237E"
-        color="#C5CAE9"
-        iconColor="#C5CAE9"
+        backgroundColor={red}
+        color={secondaryTextColor}
+        iconColor={secondaryTextColor}
         navigation={navigation}
         icon={toiletPaper}
         text="PAPEL HIGIÊNICO"
         pageName="ComparePaper"
       />
     </View>
-  </View>
+  </LinearGradient>
 );
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3949AB',
     paddingTop: 50 + StatusBar.currentHeight,
     paddingBottom: 30,
   },
@@ -62,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 30,
     alignSelf: 'center',
-    color: '#7986CB',
+    color: textColor,
   },
   buttonContainer: {
     flex: 1,
