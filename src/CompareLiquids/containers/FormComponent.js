@@ -22,7 +22,7 @@ export default ({ disabledSubmit, navigation }: Props) => (
         disabled={disabledSubmit}
         navigation={navigation}
         color={yellow}
-        disabledColor="#CCC"
+        disabledColor="#FFE4A8"
         nextPage="CompareLiquidsResult"
         label="COMPARAR"
       />

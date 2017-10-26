@@ -22,7 +22,7 @@ export default ({ disabledSubmit, navigation }: Props) => (
         disabled={disabledSubmit}
         navigation={navigation}
         color={red}
-        disabledColor="#CCC"
+        disabledColor="#FCC2BD"
         nextPage="ComparePaperResult"
         label="COMPARAR"
       />

@@ -9,6 +9,16 @@ export const orange = '#FA812F';
 export const red = '#FA4032';
 export const textColor = '#3D3527';
 export const secondaryTextColor = '#F1F3CE';
+export const selectedUnitButton = {
+  backgroundColor: '#FABE61',
+  borderColor: '#3D3527',
+  elevation: 7,
+};
+export const unitButton = {
+  backgroundColor: '#FCD392',
+  borderColor: '#3D3527',
+  elevation: 3,
+};
 
 export const genericContainer = {
   flex: 1,

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { textColor, selectedUnitButton, unitButton } from '../../shared/styles';
 import type { KeyboardType, ReturnKeyType } from '../../types';
 
 type Props = {
@@ -35,8 +36,8 @@ export default class ComparisonInputSelect extends React.Component<Props> {
             onPress={() => onChange(value)}
             style={
               selectedOption === value
-                ? styles.unitButton
-                : [styles.unitButton, styles.unitButtonDisabled]
+                ? [styles.unitButton, selectedUnitButton]
+                : [styles.unitButton, styles.unitButtonDisabled, unitButton]
             }
           >
             <Text style={styles.unitLabel}>{value}</Text>
@@ -53,14 +54,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   input: {
-    color: '#B3E5FC',
+    color: textColor,
     flex: 1,
     height: 35,
   },
   unitButton: {
-    backgroundColor: '#1976D2',
-    borderColor: '#1565C0',
-    borderRadius: 5,
+    borderRadius: 15,
     borderWidth: 1,
     flex: 1,
     marginLeft: 5,
@@ -72,8 +71,6 @@ const styles = StyleSheet.create({
     paddingTop: 2,
   },
   unitButtonDisabled: {
-    backgroundColor: '#4FC3F7',
-    borderColor: '#29B6F6',
     elevation: 3,
   },
   unitLabel: {

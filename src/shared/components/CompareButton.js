@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     fontFamily: 'proximaNovaAltRegular',
   },
   disabledSubmitLabel: {
-    color: '#fff',
+    color: '#eee',
     fontFamily: 'proximaNovaAltRegular',
   },
   submitButton: {
