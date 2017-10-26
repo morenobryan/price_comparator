@@ -1,15 +1,17 @@
 // @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import { StyleSheet, Text, TouchableOpacity, View, Picker } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInputText from '../../shared/components/ComparisonInputText';
 import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect';
-import PropTypes from 'prop-types';
+import { textColor } from '../../shared/styles';
 
 type Props = {
   productName: string,
   unit: string,
+  titleColor: string,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -28,7 +30,9 @@ export default class ProductForm extends React.Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{this.props.productName}</Text>
+        <Text style={[styles.title, { color: this.props.titleColor }]}>
+          {this.props.productName}
+        </Text>
 
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Número de Itens</Text>
@@ -39,7 +43,7 @@ export default class ProductForm extends React.Component<Props> {
             name="quantity"
             keyboardType="numeric"
             returnKeyType="next"
-            selectionColor="#0D47A1"
+            selectionColor={textColor}
             component={ComparisonInputText}
             onEnter={() => {
               this.volume && this.volume.getRenderedComponent().refs.volume.focus();
@@ -55,7 +59,7 @@ export default class ProductForm extends React.Component<Props> {
             name="volume"
             keyboardType="numeric"
             returnKeyType="next"
-            selectionColor="#0D47A1"
+            selectionColor={textColor}
             component={ComparisonInputText}
             onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
@@ -69,24 +73,7 @@ export default class ProductForm extends React.Component<Props> {
             name="price"
             keyboardType="numeric"
             returnKeyType="next"
-            selectionColor="#0D47A1"
-            normalize={(value, previousValue) => {
-              if (!value || value === 0) return value;
-
-              const numFormatter = this.context.globalize.getNumberFormatter({
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              });
-              const numParser = this.context.globalize.getNumberParser();
-              //const parsedValue = numParser(formattedValue);
-              const formattedValue = numFormatter(numParser(value));
-
-              console.log('value', value);
-              console.log('previousValue', previousValue);
-              console.log('numFormatter', formattedValue);
-              // console.log('numParser', parsedValue);
-              return formattedValue;
-            }}
+            selectionColor={textColor}
             component={ComparisonInputText}
           />
         </View>
@@ -109,13 +96,11 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 0.5,
     alignSelf: 'stretch',
-    backgroundColor: '#1E88E5',
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
     fontSize: 30,
     marginBottom: 30,
-    color: '#0D47A1',
   },
   inputContainer: {
     flex: 1,
@@ -125,7 +110,7 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     flex: 0.4,
-    color: '#B3E5FC',
+    color: textColor,
     textAlign: 'right',
     marginRight: 10,
     fontFamily: 'proximaNovaAltRegular',

@@ -1,44 +1,31 @@
 // @flow
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { LinearGradient } from 'expo';
 import ProductOne from './ProductOne';
 import ProductTwo from './ProductTwo';
 import CompareButton from '../../shared/components/CompareButton';
+import { beigeGradient, yellow, textColor, genericContainer } from '../../shared/styles';
 
 type Props = {
   disabledSubmit: boolean,
   navigation: { navigate: string => void, goBack: (?string) => void },
 };
 
-export default class FormComponent extends React.Component<Props> {
-  render() {
-    const { disabledSubmit, navigation } = this.props;
-
-    return (
-      <View style={styles.container}>
-        <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Text>VOLTAR</Text>
-          </TouchableOpacity>
-          <ProductOne navigation={navigation} />
-          <ProductTwo navigation={navigation} />
-          <CompareButton
-            disabled={disabledSubmit}
-            navigation={navigation}
-            nextPage="CompareLiquidsResult"
-            label="COMPARAR"
-          />
-        </KeyboardAwareScrollView>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#1E88E5',
-    flex: 1,
-    paddingTop: StatusBar.currentHeight,
-  },
-});
+export default ({ disabledSubmit, navigation }: Props) => (
+  <LinearGradient colors={beigeGradient} style={genericContainer}>
+    <KeyboardAwareScrollView enableOnAndroid enableAutoAutomaticScroll extraScrollHeight={60}>
+      <ProductOne titleColor={yellow} navigation={navigation} />
+      <ProductTwo titleColor={yellow} navigation={navigation} />
+      <CompareButton
+        disabled={disabledSubmit}
+        navigation={navigation}
+        color={yellow}
+        disabledColor="#CCC"
+        nextPage="CompareLiquidsResult"
+        label="COMPARAR"
+      />
+    </KeyboardAwareScrollView>
+  </LinearGradient>
+);

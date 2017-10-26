@@ -3,6 +3,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import type { KeyboardType, ReturnKeyType } from '../../types';
+import { textColor } from '../../shared/styles';
 
 type Props = {
   input: {
@@ -59,8 +60,8 @@ const styles = StyleSheet.create({
   },
   input: {
     borderBottomWidth: 1,
-    borderColor: '#B3E5FC',
-    color: '#B3E5FC',
+    borderColor: textColor,
+    color: textColor,
     flex: 1,
     fontFamily: 'proximaNovaAltRegular',
     padding: 0,

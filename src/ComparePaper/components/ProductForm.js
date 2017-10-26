@@ -5,10 +5,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInputText from '../../shared/components/ComparisonInputText';
 import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect';
+import { textColor } from '../../shared/styles';
 
 type Props = {
   productName: string,
   unit: string,
+  titleColor: string,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -23,7 +25,9 @@ export default class ProductForm extends React.Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{this.props.productName}</Text>
+        <Text style={[styles.title, { color: this.props.titleColor }]}>
+          {this.props.productName}
+        </Text>
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>Qtde de Rolos</Text>
           <Field
@@ -33,7 +37,7 @@ export default class ProductForm extends React.Component<Props> {
             name="quantity"
             keyboardType="numeric"
             returnKeyType="next"
-            selectionColor="#0D47A1"
+            selectionColor={textColor}
             component={ComparisonInputText}
             onEnter={() => {
               this.rollWidth && this.rollWidth.getRenderedComponent().refs.rollWidth.focus();
@@ -49,7 +53,7 @@ export default class ProductForm extends React.Component<Props> {
             name="rollWidth"
             keyboardType="numeric"
             returnKeyType="next"
-            selectionColor="#0D47A1"
+            selectionColor={textColor}
             component={ComparisonInputText}
             onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
@@ -63,7 +67,7 @@ export default class ProductForm extends React.Component<Props> {
             name="price"
             keyboardType="numeric"
             returnKeyType="next"
-            selectionColor="#0D47A1"
+            selectionColor={textColor}
             component={ComparisonInputText}
             onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
           />
@@ -87,13 +91,11 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 0.5,
     alignSelf: 'stretch',
-    backgroundColor: '#1E88E5',
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
     fontSize: 30,
     marginBottom: 30,
-    color: '#0D47A1',
   },
   inputContainer: {
     flex: 1,
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     flex: 0.4,
-    color: '#B3E5FC',
+    color: textColor,
     textAlign: 'right',
     marginRight: 10,
     fontFamily: 'proximaNovaAltRegular',
