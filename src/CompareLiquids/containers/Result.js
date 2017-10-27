@@ -23,11 +23,4 @@ const mapStateToProps = state => ({
   bestProductBackgroundColor: yellow,
 });
 
-const mapDispatchToProps = dispatch => ({
-  reset: () => {
-    dispatch(reset('compareLiquidsProductOne'));
-    dispatch(reset('compareLiquidsProductTwo'));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultPage);
+export default connect(mapStateToProps)(ResultPage);

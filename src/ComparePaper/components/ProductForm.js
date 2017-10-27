@@ -11,6 +11,7 @@ type Props = {
   productName: string,
   unit: string,
   titleColor: string,
+  reset: () => void,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -21,6 +22,10 @@ export default class ProductForm extends React.Component<Props> {
   setQuantityRef = (componentRef: any) => (this.quantity = componentRef);
   setRollWidthRef = (componentRef: any) => (this.rollWidth = componentRef);
   setPriceRef = (componentRef: any) => (this.price = componentRef);
+
+  componentWillMount() {
+    this.props.reset();
+  }
 
   render() {
     return (

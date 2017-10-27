@@ -2,7 +2,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { StyleSheet, Text, TouchableOpacity, View, Picker } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInputText from '../../shared/components/ComparisonInputText';
 import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect';
@@ -12,6 +12,7 @@ type Props = {
   productName: string,
   unit: string,
   titleColor: string,
+  reset: () => void,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -22,6 +23,10 @@ export default class ProductForm extends React.Component<Props> {
   quantityRef = (componentRef: any) => (this.quantity = componentRef);
   volumeRef = (componentRef: any) => (this.volume = componentRef);
   priceRef = (componentRef: any) => (this.price = componentRef);
+
+  componentWillMount() {
+    this.props.reset();
+  }
 
   setNativeProps(nativeProps) {
     this.price.setNativeProps(nativeProps);

@@ -11,6 +11,7 @@ type Props = {
   productName: string,
   unit: string,
   titleColor: string,
+  reset: () => void,
 };
 
 export default class ProductForm extends React.Component<Props> {
@@ -21,6 +22,10 @@ export default class ProductForm extends React.Component<Props> {
   quantityRef = (componentRef: any) => (this.quantity = componentRef);
   massRef = (componentRef: any) => (this.mass = componentRef);
   priceRef = (componentRef: any) => (this.price = componentRef);
+
+  componentWillMount() {
+    this.props.reset();
+  }
 
   render() {
     return (
@@ -61,7 +66,7 @@ export default class ProductForm extends React.Component<Props> {
           component={ComparisonInputSelect}
           selectedColor={orange}
           selectedOption={this.props.unit}
-          options={['g', 'kg']}
+          options={['kg', 'g']}
         />
         <Field
           ref={this.priceRef}

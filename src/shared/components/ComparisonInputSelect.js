@@ -29,7 +29,6 @@ export default class ComparisonInputSelect extends React.Component<Props> {
       selectedColor,
       input: { onChange, value, ...restInput },
       fieldTitle,
-      ...pickerProps
     } = this.props;
 
     return (

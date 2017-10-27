@@ -16,7 +16,6 @@ type Props = {
   productTwoResult: number,
   backPage: string,
   baseUnit: string,
-  reset: () => void,
   titleColor: string,
   buttonColor: string,
   bestProductBackgroundColor: string,
@@ -80,10 +79,7 @@ export default ({
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, { backgroundColor: buttonColor }]}
-        onPress={() => {
-          navigation.navigate('Dashboard');
-          reset();
-        }}
+        onPress={() => navigation.navigate('Dashboard')}
       >
         <Text style={styles.buttonText}>NOVA COMPARAÇÃO</Text>
       </TouchableOpacity>

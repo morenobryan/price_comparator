@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import { reduxForm, formValueSelector } from 'redux-form';
+import { reduxForm, formValueSelector, reset } from 'redux-form';
 
 import { validateCompareLiquidsForm } from '../validators';
 import ProductOne from '../components/ProductForm';
@@ -10,7 +10,11 @@ const mapStateToProps = state => ({
   unit: formValueSelector('compareLiquidsProductTwo')(state, 'unit'),
 });
 
-const Component = connect(mapStateToProps)(ProductOne);
+const mapDispatchToProps = dispatch => ({
+  reset: () => dispatch(reset('compareLiquidsProductTwo')),
+});
+
+const Component = connect(mapStateToProps, mapDispatchToProps)(ProductOne);
 export default reduxForm({
   form: 'compareLiquidsProductTwo',
   initialValues: { unit: 'L' },
