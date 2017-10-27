@@ -8,7 +8,7 @@ export const yellow = '#FAAF08';
 export const orange = '#FA812F';
 export const red = '#FA4032';
 export const textColor = '#3D3527';
-export const secondaryTextColor = '#F1F3CE';
+export const secondaryTextColor = '#FFF';
 export const selectedUnitButton = {
   backgroundColor: '#FABE61',
   borderColor: '#3D3527',

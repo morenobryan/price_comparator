@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ProductResult from '../components/ProductResult';
 import BestProductResult from '../components/BestProductResult';
-import { beige } from '../styles';
+import { beige, textColor, secondaryTextColor } from '../styles';
 
 type Props = {
   navigation: {
@@ -111,9 +111,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     elevation: 3,
     height: 55,
+    borderWidth: 1,
+    borderColor: textColor,
   },
   buttonText: {
-    color: '#B3E5FC',
+    color: textColor,
     fontFamily: 'proximaNovaAltRegular',
   },
 });

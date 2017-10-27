@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { secondaryTextColor } from '../../shared/styles';
+import { secondaryTextColor, textColor } from '../../shared/styles';
 
 type Props = {
   color: string,
@@ -17,7 +17,9 @@ const CompareButton = ({ color, disabled, disabledColor, label, navigation, next
     <TouchableOpacity
       style={[
         styles.submitButton,
-        disabled ? { backgroundColor: disabledColor } : { backgroundColor: color, elevation: 3 },
+        disabled
+          ? { borderColor: 'transparent', backgroundColor: disabledColor }
+          : { borderColor: textColor, backgroundColor: color, elevation: 3 },
       ]}
       onPress={() => navigation.navigate(nextPage)}
       disabled={disabled}
@@ -31,7 +33,7 @@ export default CompareButton;
 
 const styles = StyleSheet.create({
   submitLabel: {
-    color: secondaryTextColor,
+    color: textColor,
     fontFamily: 'proximaNovaAltRegular',
   },
   disabledSubmitLabel: {
@@ -46,5 +48,6 @@ const styles = StyleSheet.create({
     marginRight: 20,
     marginTop: 10,
     marginBottom: 10,
+    borderWidth: 1,
   },
 });

@@ -2,7 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { FormattedCurrency, FormattedNumber } from 'react-native-globalize';
-import { secondaryTextColor } from '../styles';
+import { secondaryTextColor, textColor } from '../styles';
 
 type Props = {
   name: string,
@@ -39,13 +39,16 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingBottom: 30,
     flex: 0.6,
-    elevation: 10,
+    elevation: 5,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: textColor,
   },
   title: {
     fontFamily: 'proximaNovaAltBold',
     fontSize: 30,
     marginBottom: 30,
-    color: '#42A5F5',
+    color: secondaryTextColor,
   },
   textContainer: {
     marginBottom: 20,
