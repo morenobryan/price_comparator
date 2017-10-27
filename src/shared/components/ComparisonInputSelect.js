@@ -18,6 +18,7 @@ type Props = {
   options: Array<string>,
   selectedOption: string,
   selectedColor: string,
+  fieldTitle: string,
 };
 
 export default class ComparisonInputSelect extends React.Component<Props> {
@@ -27,24 +28,28 @@ export default class ComparisonInputSelect extends React.Component<Props> {
       selectedOption,
       selectedColor,
       input: { onChange, value, ...restInput },
+      fieldTitle,
       ...pickerProps
     } = this.props;
 
     return (
       <View style={styles.container}>
-        {options.map(value => (
-          <TouchableOpacity
-            key={value}
-            onPress={() => onChange(value)}
-            style={
-              selectedOption === value
-                ? [styles.unitButton, selectedUnitButton, { backgroundColor: selectedColor }]
-                : [styles.unitButton, unitButton]
-            }
-          >
-            <Text style={styles.unitLabel}>{value}</Text>
-          </TouchableOpacity>
-        ))}
+        <Text style={styles.inputLabel}>{fieldTitle}</Text>
+        <View style={styles.buttonsContainer}>
+          {options.map(value => (
+            <TouchableOpacity
+              key={value}
+              onPress={() => onChange(value)}
+              style={
+                selectedOption === value
+                  ? [styles.unitButton, selectedUnitButton, { backgroundColor: selectedColor }]
+                  : [styles.unitButton, unitButton]
+              }
+            >
+              <Text style={styles.unitLabel}>{value}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
     );
   }
@@ -52,8 +57,21 @@ export default class ComparisonInputSelect extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.6,
+    flex: 1,
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonsContainer: {
+    flex: 0.5,
+    flexDirection: 'row',
+  },
+  inputLabel: {
+    flex: 0.5,
+    color: textColor,
+    textAlign: 'right',
+    marginRight: 10,
+    fontFamily: 'proximaNovaAltRegular',
   },
   input: {
     color: textColor,

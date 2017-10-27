@@ -19,6 +19,7 @@ type Props = {
   refField: any,
   returnKeyType: ReturnKeyType,
   selectionColor: string,
+  fieldTitle: string,
 };
 
 export default class ComparisonInput extends React.Component<Props> {
@@ -31,24 +32,30 @@ export default class ComparisonInput extends React.Component<Props> {
       refField,
       returnKeyType,
       selectionColor,
+      fieldTitle,
     } = this.props;
 
     return (
-      <View style={styles.container}>
-        <TextInput
-          keyboardType={keyboardType}
-          onChangeText={onChange}
-          onSubmitEditing={onEnter}
-          ref={refField}
-          returnKeyType={returnKeyType}
-          selectionColor={selectionColor}
-          style={[styles.input, touched && error ? styles.errorInput : undefined]}
-          underlineColorAndroid="transparent"
-          {...restInput}
-        />
-        {touched &&
-          ((error && <Text style={styles.error}>{error}</Text>) ||
-            (warning && <Text>{warning}</Text>))}
+      <View>
+        <View style={styles.container}>
+          <Text style={styles.inputLabel}>{fieldTitle}</Text>
+          <TextInput
+            keyboardType={keyboardType}
+            onChangeText={onChange}
+            onSubmitEditing={onEnter}
+            ref={refField}
+            returnKeyType={returnKeyType}
+            selectionColor={selectionColor}
+            style={[styles.input, touched && error ? styles.errorInput : undefined]}
+            underlineColorAndroid="transparent"
+            {...restInput}
+          />
+        </View>
+        <View>
+          {touched &&
+            ((error && <Text style={styles.error}>{error}</Text>) ||
+              (warning && <Text>{warning}</Text>))}
+        </View>
       </View>
     );
   }
@@ -56,13 +63,23 @@ export default class ComparisonInput extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.6,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inputLabel: {
+    flex: 0.5,
+    color: textColor,
+    textAlign: 'right',
+    marginRight: 10,
+    fontFamily: 'proximaNovaAltRegular',
   },
   input: {
     borderBottomWidth: 1,
     borderColor: textColor,
     color: textColor,
-    flex: 1,
+    flex: 0.5,
     fontFamily: 'proximaNovaAltRegular',
     padding: 0,
   },
@@ -71,7 +88,7 @@ const styles = StyleSheet.create({
   },
   error: {
     fontFamily: 'proximaNovaAltRegular',
-    textAlign: 'center',
+    textAlign: 'right',
     color: '#e53935',
   },
 });

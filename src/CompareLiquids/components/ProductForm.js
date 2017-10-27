@@ -34,59 +34,51 @@ export default class ProductForm extends React.Component<Props> {
           {this.props.productName}
         </Text>
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Número de Itens</Text>
-          <Field
-            ref={this.quantityRef}
-            refField="quantity"
-            withRef
-            name="quantity"
-            keyboardType="numeric"
-            returnKeyType="next"
-            selectionColor={textColor}
-            component={ComparisonInputText}
-            onEnter={() => {
-              this.volume && this.volume.getRenderedComponent().refs.volume.focus();
-            }}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Volume do Item</Text>
-          <Field
-            ref={this.volumeRef}
-            refField="volume"
-            withRef
-            name="volume"
-            keyboardType="numeric"
-            returnKeyType="next"
-            selectionColor={textColor}
-            component={ComparisonInputText}
-            onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Preço</Text>
-          <Field
-            ref={this.priceRef}
-            refField="price"
-            withRef
-            name="price"
-            keyboardType="numeric"
-            returnKeyType="next"
-            selectionColor={textColor}
-            component={ComparisonInputText}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Unidade</Text>
-          <Field
-            name="unit"
-            component={ComparisonInputSelect}
-            selectedOption={this.props.unit}
-            selectedColor={yellow}
-            options={['L', 'mL']}
-          />
-        </View>
+        <Field
+          ref={this.quantityRef}
+          refField="quantity"
+          withRef
+          name="quantity"
+          fieldTitle="Número de Itens"
+          keyboardType="numeric"
+          returnKeyType="next"
+          selectionColor={textColor}
+          component={ComparisonInputText}
+          onEnter={() => {
+            this.volume && this.volume.getRenderedComponent().refs.volume.focus();
+          }}
+        />
+        <Field
+          ref={this.volumeRef}
+          refField="volume"
+          withRef
+          name="volume"
+          fieldTitle="Volume do Item"
+          keyboardType="numeric"
+          returnKeyType="next"
+          selectionColor={textColor}
+          component={ComparisonInputText}
+          onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
+        />
+        <Field
+          name="unit"
+          fieldTitle="Unidade"
+          component={ComparisonInputSelect}
+          selectedOption={this.props.unit}
+          selectedColor={yellow}
+          options={['L', 'mL']}
+        />
+        <Field
+          ref={this.priceRef}
+          refField="price"
+          withRef
+          name="price"
+          fieldTitle="Preço"
+          keyboardType="numeric"
+          returnKeyType="next"
+          selectionColor={textColor}
+          component={ComparisonInputText}
+        />
       </View>
     );
   }

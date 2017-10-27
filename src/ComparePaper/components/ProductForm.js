@@ -28,60 +28,52 @@ export default class ProductForm extends React.Component<Props> {
         <Text style={[styles.title, { color: this.props.titleColor }]}>
           {this.props.productName}
         </Text>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Qtde de Rolos</Text>
-          <Field
-            ref={this.setQuantityRef}
-            refField="quantity"
-            withRef
-            name="quantity"
-            keyboardType="numeric"
-            returnKeyType="next"
-            selectionColor={textColor}
-            component={ComparisonInputText}
-            onEnter={() => {
-              this.rollWidth && this.rollWidth.getRenderedComponent().refs.rollWidth.focus();
-            }}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Comprimento</Text>
-          <Field
-            ref={this.setRollWidthRef}
-            refField="rollWidth"
-            withRef
-            name="rollWidth"
-            keyboardType="numeric"
-            returnKeyType="next"
-            selectionColor={textColor}
-            component={ComparisonInputText}
-            onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Preço</Text>
-          <Field
-            ref={this.setPriceRef}
-            refField="price"
-            withRef
-            name="price"
-            keyboardType="numeric"
-            returnKeyType="next"
-            selectionColor={textColor}
-            component={ComparisonInputText}
-            onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Unidade</Text>
-          <Field
-            name="widthUnit"
-            component={ComparisonInputSelect}
-            selectedColor={red}
-            selectedOption={this.props.unit}
-            options={['m', 'cm']}
-          />
-        </View>
+        <Field
+          ref={this.setQuantityRef}
+          refField="quantity"
+          withRef
+          name="quantity"
+          fieldTitle="Quantidade de Rolos"
+          keyboardType="numeric"
+          returnKeyType="next"
+          selectionColor={textColor}
+          component={ComparisonInputText}
+          onEnter={() => {
+            this.rollWidth && this.rollWidth.getRenderedComponent().refs.rollWidth.focus();
+          }}
+        />
+        <Field
+          ref={this.setRollWidthRef}
+          refField="rollWidth"
+          withRef
+          name="rollWidth"
+          fieldTitle="Comprimento"
+          keyboardType="numeric"
+          returnKeyType="next"
+          selectionColor={textColor}
+          component={ComparisonInputText}
+          onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
+        />
+        <Field
+          name="widthUnit"
+          fieldTitle="Unidade"
+          component={ComparisonInputSelect}
+          selectedColor={red}
+          selectedOption={this.props.unit}
+          options={['m', 'cm']}
+        />
+        <Field
+          ref={this.setPriceRef}
+          refField="price"
+          withRef
+          name="price"
+          fieldTitle="Preço"
+          keyboardType="numeric"
+          returnKeyType="next"
+          selectionColor={textColor}
+          component={ComparisonInputText}
+          onEnter={() => this.price && this.price.getRenderedComponent().refs.price.focus()}
+        />
       </View>
     );
   }
