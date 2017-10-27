@@ -12,12 +12,11 @@ export const secondaryTextColor = '#F1F3CE';
 export const selectedUnitButton = {
   backgroundColor: '#FABE61',
   borderColor: '#3D3527',
-  elevation: 7,
+  elevation: 3,
 };
 export const unitButton = {
-  backgroundColor: '#FCD392',
+  backgroundColor: '#FFF2DE',
   borderColor: '#3D3527',
-  elevation: 3,
 };
 
 export const genericContainer = {

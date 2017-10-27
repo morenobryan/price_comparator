@@ -5,7 +5,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ComparisonInputText from '../../shared/components/ComparisonInputText';
 import ComparisonInputSelect from '../../shared/components/ComparisonInputSelect';
-import { textColor } from '../../shared/styles';
+import { red, textColor } from '../../shared/styles';
 
 type Props = {
   productName: string,
@@ -77,6 +77,7 @@ export default class ProductForm extends React.Component<Props> {
           <Field
             name="widthUnit"
             component={ComparisonInputSelect}
+            selectedColor={red}
             selectedOption={this.props.unit}
             options={['m', 'cm']}
           />

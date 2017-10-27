@@ -2,26 +2,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { FormattedCurrency } from 'react-native-globalize';
+import { textColor } from '../styles';
 
 type Props = {
   name: string,
   result: number,
   baseUnit: string,
+  titleColor: string,
 };
 
-const Result = ({ name, result, baseUnit }: Props) => {
-  return (
-    <View style={styles.subContainer}>
-      <Text style={styles.title}>{name}</Text>
-      <View>
-        <FormattedCurrency value={result} maximumFractionDigits={4} style={styles.bigText} />
-        <Text style={styles.text}>é o custo deste produto por {baseUnit}</Text>
-      </View>
+export default ({ name, result, baseUnit, titleColor }: Props) => (
+  <View style={styles.subContainer}>
+    <Text style={[styles.title, { color: titleColor }]}>{name}</Text>
+    <View>
+      <FormattedCurrency value={result} maximumFractionDigits={4} style={styles.bigText} />
+      <Text style={styles.text}>é o custo deste produto por {baseUnit}</Text>
     </View>
-  );
-};
-
-export default Result;
+  </View>
+);
 
 const styles = StyleSheet.create({
   subContainer: {
@@ -33,15 +31,14 @@ const styles = StyleSheet.create({
     fontFamily: 'proximaNovaAltBold',
     fontSize: 30,
     marginBottom: 20,
-    color: '#0D47A1',
   },
   bigText: {
     fontSize: 35,
-    color: '#90CAF9',
+    color: textColor,
     fontFamily: 'proximaNovaSemibold',
   },
   text: {
-    color: '#90CAF9',
+    color: textColor,
     fontFamily: 'proximaNovaSemibold',
     fontSize: 18,
   },

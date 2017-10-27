@@ -17,6 +17,7 @@ type Props = {
   },
   options: Array<string>,
   selectedOption: string,
+  selectedColor: string,
 };
 
 export default class ComparisonInputSelect extends React.Component<Props> {
@@ -24,6 +25,7 @@ export default class ComparisonInputSelect extends React.Component<Props> {
     const {
       options,
       selectedOption,
+      selectedColor,
       input: { onChange, value, ...restInput },
       ...pickerProps
     } = this.props;
@@ -36,8 +38,8 @@ export default class ComparisonInputSelect extends React.Component<Props> {
             onPress={() => onChange(value)}
             style={
               selectedOption === value
-                ? [styles.unitButton, selectedUnitButton]
-                : [styles.unitButton, styles.unitButtonDisabled, unitButton]
+                ? [styles.unitButton, selectedUnitButton, { backgroundColor: selectedColor }]
+                : [styles.unitButton, unitButton]
             }
           >
             <Text style={styles.unitLabel}>{value}</Text>
@@ -69,9 +71,6 @@ const styles = StyleSheet.create({
     paddingLeft: 7,
     paddingRight: 7,
     paddingTop: 2,
-  },
-  unitButtonDisabled: {
-    elevation: 3,
   },
   unitLabel: {
     fontFamily: 'proximaNovaAltRegular',

@@ -8,8 +8,8 @@ import {
   calculatePricePerUnitProductOne,
   calculatePricePerUnitProductTwo,
 } from '../selectors';
-
 import ResultPage from '../../shared/components/ResultPage';
+import { yellow } from '../../shared/styles';
 
 const mapStateToProps = state => ({
   worstProduct: calculateWorstProduct(state),
@@ -18,6 +18,9 @@ const mapStateToProps = state => ({
   productTwoResult: calculatePricePerUnitProductTwo(state),
   backPage: 'CompareLiquids',
   baseUnit: 'litro',
+  titleColor: yellow,
+  buttonColor: yellow,
+  bestProductBackgroundColor: yellow,
 });
 
 const mapDispatchToProps = dispatch => ({
