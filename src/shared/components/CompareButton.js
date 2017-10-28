@@ -13,15 +13,7 @@ type Props = {
   icon: string,
 };
 
-const CompareButton = ({
-  color,
-  disabled,
-  disabledColor,
-  icon,
-  label,
-  navigation,
-  nextPage,
-}: Props) => (
+export default ({ color, disabled, disabledColor, icon, label, navigation, nextPage }: Props) => (
   <TouchableOpacity
     style={[
       styles.submitButton,
@@ -38,8 +30,6 @@ const CompareButton = ({
     <Text style={disabled ? styles.disabledSubmitLabel : styles.submitLabel}>{label}</Text>
   </TouchableOpacity>
 );
-
-export default CompareButton;
 
 const styles = StyleSheet.create({
   submitLabel: {
