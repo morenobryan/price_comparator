@@ -11,7 +11,7 @@ import {
   textColor,
   secondaryTextColor,
 } from '../../shared/styles';
-import { bagIcon, toiletPaper, drink, water } from '../../shared/icons';
+import { solidIcon, toiletPaperIcon, drinkIcon, water } from '../../shared/icons';
 
 type Props = {
   navigation: {
@@ -28,7 +28,7 @@ export default ({ navigation }: Props) => (
         color={secondaryTextColor}
         iconColor={secondaryTextColor}
         navigation={navigation}
-        icon={drink}
+        icon={drinkIcon}
         text="LÍQUIDOS"
         pageName="CompareLiquids"
       />
@@ -37,7 +37,7 @@ export default ({ navigation }: Props) => (
         color={secondaryTextColor}
         iconColor={secondaryTextColor}
         navigation={navigation}
-        icon={bagIcon}
+        icon={solidIcon}
         text="SÓLIDOS"
         pageName="CompareSolids"
       />
@@ -46,7 +46,7 @@ export default ({ navigation }: Props) => (
         color={secondaryTextColor}
         iconColor={secondaryTextColor}
         navigation={navigation}
-        icon={toiletPaper}
+        icon={toiletPaperIcon}
         text="PAPEL HIGIÊNICO"
         pageName="ComparePaper"
       />
