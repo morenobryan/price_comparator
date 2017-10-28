@@ -7,6 +7,7 @@ import ProductOne from './ProductOne';
 import ProductTwo from './ProductTwo';
 import CompareButton from '../../shared/components/CompareButton';
 import { beigeGradient, red, textColor, genericContainer } from '../../shared/styles';
+import { toiletPaper } from '../../shared/icons';
 
 type Props = {
   disabledSubmit: boolean,
@@ -22,6 +23,7 @@ export default ({ disabledSubmit, navigation }: Props) => (
         disabled={disabledSubmit}
         navigation={navigation}
         color={red}
+        icon={toiletPaper}
         disabledColor="#FCC2BD"
         nextPage="ComparePaperResult"
         label="COMPARAR"

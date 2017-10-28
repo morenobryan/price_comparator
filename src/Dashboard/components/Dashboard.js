@@ -11,12 +11,7 @@ import {
   textColor,
   secondaryTextColor,
 } from '../../shared/styles';
-
-const bagIcon = '\uf100';
-const toiletPaper1 = '\uf101';
-const toiletPaper = '\uf102';
-const drink = '\uf103';
-const water = '\uf104';
+import { bagIcon, toiletPaper, drink, water } from '../../shared/icons';
 
 type Props = {
   navigation: {
