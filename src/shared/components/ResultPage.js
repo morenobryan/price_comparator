@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import ProductResult from '../components/ProductResult';
 import BestProductResult from '../components/BestProductResult';
 import { beige, textColor, secondaryTextColor } from '../styles';
@@ -79,7 +80,13 @@ export default ({
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, { backgroundColor: buttonColor }]}
-        onPress={() => navigation.navigate('Dashboard')}
+        onPress={() => {
+          const resetAction = NavigationActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: 'Dashboard' })],
+          });
+          navigation.dispatch(resetAction);
+        }}
       >
         <Text style={styles.buttonText}>NOVA COMPARAÇÃO</Text>
       </TouchableOpacity>
