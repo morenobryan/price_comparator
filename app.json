@@ -3,7 +3,7 @@
     "name": "Tô Economizando?",
     "slug": "to-economizando",
     "primaryColor": "#FEF3E2",
-    "icon": "./assets/logo/logoxxhdpi.png",
+    "icon": "./assets/logo/iconxhdpi.png",
     "loading": {
       "icon": "./assets/logo/logoxxhdpi.png",
       "backgroundColor": "#FEF3E2",
