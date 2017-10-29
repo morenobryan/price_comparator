@@ -12,9 +12,9 @@ const exampleState = {
     },
     compareLiquidsProductTwo: {
       values: {
-        price: '5',
-        quantity: '6',
-        volume: '7',
+        price: '10',
+        quantity: '20',
+        volume: '25',
         unit: 'mL',
       },
     },
@@ -45,43 +45,170 @@ const emptyExample = {
 /* Form */
 describe('calculatePricePerUnitProductOne', () => {
   it('calculates the correct sum', () => {
-    const formOne = exampleState.form.compareLiquidsProductOne.values;
+    expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(0.15);
+  });
 
-    expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      formOne.quantity * formOne.volume * 1 / formOne.price
-    );
+  it('calculates the correct sum with mL', () => {
+    const state = {
+      form: {
+        compareLiquidsProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            volume: '5',
+            unit: 'mL',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(150);
+  });
+
+  it('calculates the correct sum', () => {
+    const state = {
+      form: {
+        compareLiquidsProductOne: {
+          values: {
+            price: '6',
+            quantity: '1',
+            volume: '0.012',
+            unit: 'L',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(500);
+  });
+
+  it('calculates the correct sum with mL', () => {
+    const state = {
+      form: {
+        compareLiquidsProductOne: {
+          values: {
+            price: '6',
+            quantity: '1',
+            volume: '12',
+            unit: 'mL',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(500);
   });
 });
 
 describe('calculatePricePerUnitProductTwo', () => {
   it('calculates the correct sum', () => {
-    const formTwo = exampleState.form.compareLiquidsProductTwo.values;
+    expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(20);
+  });
 
-    expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      formTwo.quantity * formTwo.volume * 1000 / formTwo.price
-    );
+  it('calculates the correct sum with L', () => {
+    const state = {
+      form: {
+        compareLiquidsProductTwo: {
+          values: {
+            price: '10',
+            quantity: '20',
+            volume: '25',
+            unit: 'L',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(0.02);
+  });
+
+  it('calculates the correct sum', () => {
+    const state = {
+      form: {
+        compareLiquidsProductTwo: {
+          values: {
+            price: '6',
+            quantity: '1',
+            volume: '0.012',
+            unit: 'L',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(500);
+  });
+
+  it('calculates the correct sum with mL', () => {
+    const state = {
+      form: {
+        compareLiquidsProductTwo: {
+          values: {
+            price: '6',
+            quantity: '1',
+            volume: '12',
+            unit: 'mL',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(500);
   });
 });
 
 describe('calculateWorstProduct', () => {
-  it('calculates the worst product', () => {
-    expect(selectors.calculateWorstProduct(exampleState)).toEqual(
-      selectors.calculatePricePerUnitProductTwo(exampleState)
-    );
+  it('calculates the worst product when it is the second product', () => {
+    expect(selectors.calculateWorstProduct(exampleState)).toEqual(20);
+  });
+
+  it('calculates the worst product when it is the first product', () => {
+    const state = {
+      form: {
+        compareLiquidsProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            volume: '5',
+            unit: 'L',
+          },
+        },
+        compareLiquidsProductTwo: {
+          values: {
+            price: '1',
+            quantity: '1',
+            volume: '100',
+            unit: 'L',
+          },
+        },
+      },
+    };
+
+    expect(selectors.calculateWorstProduct(state)).toEqual(0.15);
   });
 });
 
 describe('calculateEconomyPercentage', () => {
-  it('calculates the correct sum', () => {
-    const formOne = exampleState.form.compareLiquidsProductOne.values;
-    const formTwo = exampleState.form.compareLiquidsProductTwo.values;
-    const priceOne = formOne.quantity * formOne.volume * 1 / formOne.price;
-    const priceTwo = formTwo.quantity * formTwo.volume * 1000 / formTwo.price;
-    const worstPrice = Math.max(priceOne, priceTwo);
-    const bestPrice = Math.min(priceOne, priceTwo);
+  it('calculates the correct economy percentage', () => {
+    expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(0.9925);
+  });
 
-    expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(
-      (worstPrice - bestPrice) / worstPrice
-    );
+  it('calculates the worst product when it is the first product', () => {
+    const state = {
+      form: {
+        compareLiquidsProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            volume: '5',
+            unit: 'L',
+          },
+        },
+        compareLiquidsProductTwo: {
+          values: {
+            price: '1',
+            quantity: '1',
+            volume: '100',
+            unit: 'L',
+          },
+        },
+      },
+    };
+
+    expect(selectors.calculateEconomyPercentage(state)).toEqual(0.9333333333333332);
   });
 });

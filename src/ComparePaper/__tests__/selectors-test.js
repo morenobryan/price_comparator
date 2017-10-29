@@ -6,15 +6,15 @@ const exampleState = {
       values: {
         price: '3',
         quantity: '4',
-        volume: '5',
+        rollWidth: '5',
         widthUnit: 'm',
       },
     },
     comparePaperProductTwo: {
       values: {
-        price: '5',
-        quantity: '6',
-        volume: '7',
+        price: '10',
+        quantity: '20',
+        rollWidth: '25',
         widthUnit: 'cm',
       },
     },
@@ -45,43 +45,170 @@ const emptyExample = {
 /* Form */
 describe('calculatePricePerUnitProductOne', () => {
   it('calculates the correct sum', () => {
-    const formOne = exampleState.form.comparePaperProductOne.values;
+    expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(0.15);
+  });
 
-    expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      formOne.quantity * formOne.rollWidth * 1 / formOne.price
-    );
+  it('calculates the correct sum with mL', () => {
+    const state = {
+      form: {
+        comparePaperProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            rollWidth: '5',
+            widthUnit: 'cm',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(15);
+  });
+
+  it('calculates the correct sum', () => {
+    const state = {
+      form: {
+        comparePaperProductOne: {
+          values: {
+            price: '6',
+            quantity: '1',
+            rollWidth: '0.012',
+            widthUnit: 'm',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(500);
+  });
+
+  it('calculates the correct sum with mL', () => {
+    const state = {
+      form: {
+        comparePaperProductOne: {
+          values: {
+            price: '6',
+            quantity: '1',
+            rollWidth: '12',
+            widthUnit: 'cm',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(50);
   });
 });
 
 describe('calculatePricePerUnitProductTwo', () => {
   it('calculates the correct sum', () => {
-    const formTwo = exampleState.form.comparePaperProductTwo.values;
+    expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(2);
+  });
 
-    expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      formTwo.quantity * formTwo.rollWidth * 100 / formTwo.price
-    );
+  it('calculates the correct sum with L', () => {
+    const state = {
+      form: {
+        comparePaperProductTwo: {
+          values: {
+            price: '10',
+            quantity: '20',
+            rollWidth: '25',
+            widthUnit: 'm',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(0.02);
+  });
+
+  it('calculates the correct sum', () => {
+    const state = {
+      form: {
+        comparePaperProductTwo: {
+          values: {
+            price: '6',
+            quantity: '1',
+            rollWidth: '0.012',
+            widthUnit: 'm',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(500);
+  });
+
+  it('calculates the correct sum with mL', () => {
+    const state = {
+      form: {
+        comparePaperProductTwo: {
+          values: {
+            price: '6',
+            quantity: '1',
+            rollWidth: '12',
+            widthUnit: 'cm',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(50);
   });
 });
 
 describe('calculateWorstProduct', () => {
-  it('calculates the worst product', () => {
-    expect(selectors.calculateWorstProduct(exampleState)).toEqual(
-      selectors.calculatePricePerUnitProductTwo(exampleState)
-    );
+  it('calculates the worst product when it is the second product', () => {
+    expect(selectors.calculateWorstProduct(exampleState)).toEqual(2);
+  });
+
+  it('calculates the worst product when it is the first product', () => {
+    const state = {
+      form: {
+        comparePaperProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            rollWidth: '5',
+            widthUnit: 'm',
+          },
+        },
+        comparePaperProductTwo: {
+          values: {
+            price: '1',
+            quantity: '1',
+            rollWidth: '100',
+            widthUnit: 'm',
+          },
+        },
+      },
+    };
+
+    expect(selectors.calculateWorstProduct(state)).toEqual(0.15);
   });
 });
 
 describe('calculateEconomyPercentage', () => {
-  it('calculates the economy percentage', () => {
-    const formOne = exampleState.form.comparePaperProductOne.values;
-    const formTwo = exampleState.form.comparePaperProductTwo.values;
-    const priceOne = formOne.quantity * formOne.rollWidth * 1 / formOne.price;
-    const priceTwo = formTwo.quantity * formTwo.rollWidth * 100 / formOne.price;
-    const worstPrice = Math.max(priceOne, priceTwo);
-    const bestPrice = Math.min(priceOne, priceTwo);
+  it('calculates the correct economy percentage', () => {
+    expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(0.925);
+  });
 
-    expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(
-      (worstPrice - bestPrice) / worstPrice
-    );
+  it('calculates the worst product when it is the first product', () => {
+    const state = {
+      form: {
+        comparePaperProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            rollWidth: '5',
+            widthUnit: 'm',
+          },
+        },
+        comparePaperProductTwo: {
+          values: {
+            price: '1',
+            quantity: '1',
+            rollWidth: '100',
+            widthUnit: 'm',
+          },
+        },
+      },
+    };
+
+    expect(selectors.calculateEconomyPercentage(state)).toEqual(0.9333333333333332);
   });
 });

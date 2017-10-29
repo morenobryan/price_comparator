@@ -7,15 +7,15 @@ const exampleState = {
         price: '3',
         quantity: '4',
         mass: '5',
-        unit: 'g',
+        unit: 'kg',
       },
     },
     compareSolidsProductTwo: {
       values: {
-        price: '5',
-        quantity: '6',
-        mass: '7',
-        unit: 'kg',
+        price: '10',
+        quantity: '20',
+        mass: '25',
+        unit: 'g',
       },
     },
   },
@@ -45,43 +45,170 @@ const emptyExample = {
 /* Form */
 describe('calculatePricePerUnitProductOne', () => {
   it('calculates the correct sum', () => {
-    const formOne = exampleState.form.compareSolidsProductOne.values;
+    expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(0.15);
+  });
 
-    expect(selectors.calculatePricePerUnitProductOne(exampleState)).toEqual(
-      formOne.quantity * formOne.mass * 1000 / formOne.price
-    );
+  it('calculates the correct sum with g', () => {
+    const state = {
+      form: {
+        compareSolidsProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            mass: '5',
+            unit: 'g',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(150);
+  });
+
+  it('calculates the correct sum', () => {
+    const state = {
+      form: {
+        compareSolidsProductOne: {
+          values: {
+            price: '6',
+            quantity: '1',
+            mass: '0.012',
+            unit: 'kg',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(500);
+  });
+
+  it('calculates the correct sum with g', () => {
+    const state = {
+      form: {
+        compareSolidsProductOne: {
+          values: {
+            price: '6',
+            quantity: '1',
+            mass: '12',
+            unit: 'g',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductOne(state)).toEqual(500);
   });
 });
 
 describe('calculatePricePerUnitProductTwo', () => {
   it('calculates the correct sum', () => {
-    const formTwo = exampleState.form.compareSolidsProductTwo.values;
+    expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(20);
+  });
 
-    expect(selectors.calculatePricePerUnitProductTwo(exampleState)).toEqual(
-      formTwo.quantity * formTwo.mass * 1 / formTwo.price
-    );
+  it('calculates the correct sum with L', () => {
+    const state = {
+      form: {
+        compareSolidsProductTwo: {
+          values: {
+            price: '10',
+            quantity: '20',
+            mass: '25',
+            unit: 'kg',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(0.02);
+  });
+
+  it('calculates the correct sum', () => {
+    const state = {
+      form: {
+        compareSolidsProductTwo: {
+          values: {
+            price: '6',
+            quantity: '1',
+            mass: '0.012',
+            unit: 'kg',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(500);
+  });
+
+  it('calculates the correct sum with g', () => {
+    const state = {
+      form: {
+        compareSolidsProductTwo: {
+          values: {
+            price: '6',
+            quantity: '1',
+            mass: '12',
+            unit: 'g',
+          },
+        },
+      },
+    };
+    expect(selectors.calculatePricePerUnitProductTwo(state)).toEqual(500);
   });
 });
 
 describe('calculateWorstProduct', () => {
-  it('calculates the worst product', () => {
-    expect(selectors.calculateWorstProduct(exampleState)).toEqual(
-      selectors.calculatePricePerUnitProductOne(exampleState)
-    );
+  it('calculates the worst product when it is the second product', () => {
+    expect(selectors.calculateWorstProduct(exampleState)).toEqual(20);
+  });
+
+  it('calculates the worst product when it is the first product', () => {
+    const state = {
+      form: {
+        compareSolidsProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            mass: '5',
+            unit: 'kg',
+          },
+        },
+        compareSolidsProductTwo: {
+          values: {
+            price: '1',
+            quantity: '1',
+            mass: '100',
+            unit: 'kg',
+          },
+        },
+      },
+    };
+
+    expect(selectors.calculateWorstProduct(state)).toEqual(0.15);
   });
 });
 
 describe('calculateEconomyPercentage', () => {
-  it('calculates the correct sum', () => {
-    const formOne = exampleState.form.compareSolidsProductOne.values;
-    const formTwo = exampleState.form.compareSolidsProductTwo.values;
-    const priceOne = formOne.quantity * formOne.mass * 1000 / formOne.price;
-    const priceTwo = formTwo.quantity * formTwo.mass * 1 / formTwo.price;
-    const worstPrice = Math.max(priceOne, priceTwo);
-    const bestPrice = Math.min(priceOne, priceTwo);
+  it('calculates the correct economy percentage', () => {
+    expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(0.9925);
+  });
 
-    expect(selectors.calculateEconomyPercentage(exampleState)).toEqual(
-      (worstPrice - bestPrice) / worstPrice
-    );
+  it('calculates the worst product when it is the first product', () => {
+    const state = {
+      form: {
+        compareSolidsProductOne: {
+          values: {
+            price: '3',
+            quantity: '4',
+            mass: '5',
+            unit: 'kg',
+          },
+        },
+        compareSolidsProductTwo: {
+          values: {
+            price: '1',
+            quantity: '1',
+            mass: '100',
+            unit: 'kg',
+          },
+        },
+      },
+    };
+
+    expect(selectors.calculateEconomyPercentage(state)).toEqual(0.9333333333333332);
   });
 });
