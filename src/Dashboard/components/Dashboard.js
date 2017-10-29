@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   title: {
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSoftBold',
     fontSize: 30,
     marginBottom: 30,
     alignSelf: 'center',
