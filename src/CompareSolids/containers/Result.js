@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
   productOneResult: calculatePricePerUnitProductOne(state),
   productTwoResult: calculatePricePerUnitProductTwo(state),
   backPage: 'CompareSolids',
-  baseUnit: 'grama',
+  baseUnit: 'quilo',
   titleColor: orange,
   buttonColor: orange,
   bestProductBackgroundColor: orange,

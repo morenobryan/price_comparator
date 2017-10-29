@@ -17,6 +17,6 @@ const mapDispatchToProps = dispatch => ({
 const Component = connect(mapStateToProps, mapDispatchToProps)(ProductOne);
 export default reduxForm({
   form: 'compareSolidsProductTwo',
-  initialValues: { unit: 'g' },
+  initialValues: { unit: 'kg' },
   validate: validateCompareSolidsForm,
 })(Component);
