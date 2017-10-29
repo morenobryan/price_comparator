@@ -3,9 +3,9 @@
     "name": "Tô Economizando?",
     "slug": "to-economizando",
     "primaryColor": "#FEF3E2",
-    "icon": "./assets/logo/iconxhdpi.png",
+    "icon": "./assets/logo/iconxxxhdpi.png",
     "loading": {
-      "icon": "./assets/logo/logoxxhdpi.png",
+      "icon": "./assets/logo/logoxxxhdpi.png",
       "backgroundColor": "#FEF3E2",
       "hideExponentText": true
     },

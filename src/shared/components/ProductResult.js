@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 0.4,
   },
   title: {
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSoftBold',
     fontSize: 30,
     marginBottom: 20,
   },

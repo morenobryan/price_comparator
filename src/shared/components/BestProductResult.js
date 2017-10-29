@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     borderColor: textColor,
   },
   title: {
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSoftBold',
     fontSize: 30,
     marginBottom: 30,
     color: secondaryTextColor,

@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image } from 'react-native';
 import { LinearGradient } from 'expo';
 import NavButton from './NavButton';
 import {
@@ -21,6 +21,7 @@ type Props = {
 
 export default ({ navigation }: Props) => (
   <LinearGradient colors={beigeGradient} style={styles.container}>
+    <Image style={styles.image} source={require('../../../assets/logo/iconxxxhdpi.png')} />
     <Text style={styles.title}>Escolha a categoria</Text>
     <View style={styles.buttonContainer}>
       <NavButton
@@ -57,8 +58,14 @@ export default ({ navigation }: Props) => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 50 + StatusBar.currentHeight,
+    paddingTop: 20 + StatusBar.currentHeight,
     paddingBottom: 30,
+  },
+  image: {
+    alignSelf: 'center',
+    width: 75,
+    height: 75,
+    marginBottom: 15,
   },
   title: {
     fontFamily: 'proximaNovaSoftBold',
