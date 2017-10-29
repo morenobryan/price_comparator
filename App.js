@@ -26,6 +26,7 @@ export default class App extends React.Component {
       proximaNovaSemibold: require('./assets/fonts/proximaNovaSemibold.ttf'),
       proximaNovaAltBold: require('./assets/fonts/proximaNovaAltBold.ttf'),
       proximaNovaAltRegular: require('./assets/fonts/proximaNovaAltRegular.ttf'),
+      proximaNovaSoftBold: require('./assets/fonts/proximanovasoftbold.ttf'),
       flaticon: require('./assets/fonts/Flaticon.ttf'),
     });
     this.setState({ loaded: true });

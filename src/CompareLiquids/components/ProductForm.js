@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   title: {
-    fontFamily: 'proximaNovaAltBold',
+    fontFamily: 'proximaNovaSoftBold',
     fontSize: 30,
     marginBottom: 30,
   },
