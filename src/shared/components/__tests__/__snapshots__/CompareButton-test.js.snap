@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  collapsable={undefined}
+  hitSlop={undefined}
+  isTVSelectable={true}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "borderColor": "#3D3527",
+      "borderRadius": 30,
+      "borderWidth": 1,
+      "elevation": 3,
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+      "marginBottom": 10,
+      "marginLeft": 20,
+      "marginRight": 20,
+      "marginTop": 10,
+      "opacity": 1,
+      "padding": 20,
+    }
+  }
+  testID={undefined}
+  tvParallaxProperties={undefined}
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "color": "#3D3527",
+          "fontFamily": "proximaNovaAltRegular",
+        },
+        Object {
+          "fontFamily": "flaticon",
+          "paddingRight": 5,
+        },
+      ]
+    }
+  >
+    Test Icon
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#3D3527",
+        "fontFamily": "proximaNovaAltRegular",
+      }
+    }
+  >
+    Test Label
+  </Text>
+</View>
+`;
