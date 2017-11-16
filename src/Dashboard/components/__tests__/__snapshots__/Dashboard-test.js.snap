@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<ExponentLinearGradient
+  colors={
+    Array [
+      4294634711,
+      4294898658,
+    ]
+  }
+  end={undefined}
+  locations={null}
+  start={undefined}
+  style={
+    Object {
+      "flex": 1,
+      "paddingBottom": 30,
+      "paddingTop": NaN,
+    }
+  }
+>
+  <Image
+    source={1}
+    style={
+      Object {
+        "alignSelf": "center",
+        "height": 75,
+        "marginBottom": 15,
+        "width": 75,
+      }
+    }
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "alignSelf": "center",
+        "color": "#3D3527",
+        "fontFamily": "proximaNovaSoftBold",
+        "fontSize": 30,
+        "marginBottom": 30,
+      }
+    }
+  >
+    Escolha a categoria
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "stretch",
+        "flex": 1,
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FAAF08",
+          "elevation": 3,
+          "flexDirection": "row",
+          "opacity": 1,
+          "padding": 30,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "#FFF",
+            "fontFamily": "flaticon",
+            "fontSize": 50,
+            "marginRight": 30,
+          }
+        }
+      >
+        
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "#FFF",
+            "fontFamily": "proximaNovaAltRegular",
+            "fontSize": 24,
+          }
+        }
+      >
+        LÍQUIDOS
+      </Text>
+    </View>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FA812F",
+          "elevation": 3,
+          "flexDirection": "row",
+          "opacity": 1,
+          "padding": 30,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "#FFF",
+            "fontFamily": "flaticon",
+            "fontSize": 50,
+            "marginRight": 30,
+          }
+        }
+      >
+        
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "#FFF",
+            "fontFamily": "proximaNovaAltRegular",
+            "fontSize": 24,
+          }
+        }
+      >
+        SÓLIDOS
+      </Text>
+    </View>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FA4032",
+          "elevation": 3,
+          "flexDirection": "row",
+          "opacity": 1,
+          "padding": 30,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "#FFF",
+            "fontFamily": "flaticon",
+            "fontSize": 50,
+            "marginRight": 30,
+          }
+        }
+      >
+        
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "color": "#FFF",
+            "fontFamily": "proximaNovaAltRegular",
+            "fontSize": 24,
+          }
+        }
+      >
+        PAPEL HIGIÊNICO
+      </Text>
+    </View>
+  </View>
+</ExponentLinearGradient>
+`;

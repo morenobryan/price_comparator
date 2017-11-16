@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#3D3527",
+        "flex": 0.5,
+        "fontFamily": "proximaNovaAltRegular",
+        "marginRight": 10,
+        "textAlign": "right",
+      }
+    }
+  >
+    title
+  </Text>
+  <View
+    style={
+      Object {
+        "flex": 0.5,
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#fff",
+          "borderColor": "#3D3527",
+          "borderRadius": 15,
+          "borderWidth": 1,
+          "elevation": 3,
+          "flex": 1,
+          "marginLeft": 5,
+          "marginRight": 5,
+          "marginTop": 5,
+          "opacity": 1,
+          "paddingBottom": 4,
+          "paddingLeft": 7,
+          "paddingRight": 7,
+          "paddingTop": 2,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "fontFamily": "proximaNovaAltRegular",
+          }
+        }
+      >
+        one
+      </Text>
+    </View>
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      collapsable={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#FFF2DE",
+          "borderColor": "#3D3527",
+          "borderRadius": 15,
+          "borderWidth": 1,
+          "flex": 1,
+          "marginLeft": 5,
+          "marginRight": 5,
+          "marginTop": 5,
+          "opacity": 1,
+          "paddingBottom": 4,
+          "paddingLeft": 7,
+          "paddingRight": 7,
+          "paddingTop": 2,
+        }
+      }
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "center",
+            "fontFamily": "proximaNovaAltRegular",
+          }
+        }
+      >
+        two
+      </Text>
+    </View>
+  </View>
+</View>
+`;

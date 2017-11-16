@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#3D3527",
+          "flex": 0.5,
+          "fontFamily": "proximaNovaAltRegular",
+          "marginRight": 10,
+          "textAlign": "right",
+        }
+      }
+    >
+      title
+    </Text>
+    <TextInput
+      keyboardType="numeric"
+      onChangeText={[Function]}
+      onSubmitEditing={[Function]}
+      returnKeyType="next"
+      selectionColor="#fff"
+      style={
+        Array [
+          Object {
+            "borderBottomWidth": 1,
+            "borderColor": "#3D3527",
+            "color": "#3D3527",
+            "flex": 0.5,
+            "fontFamily": "proximaNovaAltRegular",
+            "padding": 0,
+          },
+          undefined,
+        ]
+      }
+      underlineColorAndroid="transparent"
+    />
+  </View>
+  <View />
+</View>
+`;
